@@ -1,0 +1,41 @@
+.header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 30px 0px;
+    border-bottom: #F5F5F5 2px solid;
+}
+.options{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    width: 35%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.options li{
+    margin-left: 10px;
+}
+.logo{
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.serach{
+    background-color:#F5F5F5;
+    display: flex;
+padding: 7px 12px 7px 20px;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 4px;
+    
+}
+
+.serach  input{
+    border: none;
+    background-color: transparent;
+}
