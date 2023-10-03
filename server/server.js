@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors")
+const path = require("path");
 const dotenv = require("dotenv");
 const bodyparser = require("body-parser");
 const logger = require("morgan");
@@ -8,6 +10,7 @@ const users = require("./routes/users");
 var jwt = require('jsonwebtoken');
 dotenv.config();
 const app = express();
+app.use(cors())
 app.use(express.json())
 app.set("TOKEN_SECRET", process.env.TOKEN_SECRET);
 // console.log(app.get("TOKEN_SECRET"));
@@ -45,6 +48,7 @@ app.use(function(req, res, next) {
    else 
      res.status(500).json({message: "Something looks wrong :( !!!"});
  });
-app.listen(1337, () => {
+ const server =  app.listen(1337, () => {
   console.log("node server Listening on port 1337");
 });
+server.timeout = 500000

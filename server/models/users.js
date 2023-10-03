@@ -7,8 +7,11 @@ module.exports = (sequelize) => {
     "User",
     {
       state: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('Seller', 'Buyer'),
         allowNull: false,
+        set(val) {
+          this.setDataValue("state", val.trim());
+        },
       },
       name: {
         type: DataTypes.STRING,

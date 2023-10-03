@@ -22,30 +22,30 @@ const HomePage = () => {
              <li>Health & Beauty</li>
            </ul>
          </div>
-         <div id="carouselExampleIndicators" class="carousel slide slider">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+         <div id="carouselExampleIndicators" className="carousel slide slider">
+  <div className="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://www.notebookcheck.org/uploads/tx_nbc2/AppleiPhone14Pro__1__01.JPG" class="d-block w-100" alt="..."/>
+  <div className="carousel-inner">
+    <div className="carousel-item active">
+      <img src="https://www.notebookcheck.org/uploads/tx_nbc2/AppleiPhone14Pro__1__01.JPG" className="d-block w-100" alt="..."/>
     </div>
-    <div class="carousel-item">
-      <img src="https://i.ytimg.com/vi/FT3ODSg1GFE/maxresdefault.jpg" class="d-block w-100" alt="..."/>
+    <div className="carousel-item">
+      <img src="https://i.ytimg.com/vi/FT3ODSg1GFE/maxresdefault.jpg" className="d-block w-100" alt="..."/>
     </div>
-    <div class="carousel-item">
-      <img src="https://www.01net.com/app/uploads/2022/10/MEA2-iPhone-14-Pro-Photo-Test.jpg" class="d-block w-100" alt="..."/>
+    <div className="carousel-item">
+      <img src="https://www.01net.com/app/uploads/2022/10/MEA2-iPhone-14-Pro-Photo-Test.jpg" className="d-block w-100" alt="..."/>
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+  <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+    <span className="visually-hidden">Next</span>
   </button>
 </div>
       </div>
