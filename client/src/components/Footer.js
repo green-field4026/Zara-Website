@@ -9,10 +9,7 @@ const Footer = () => {
       <div class="frame">
         <div class="under-line"></div>
         <div class="frame-wrapper">
-          <div class="div">
-            <img class="icon-copyright" src="img/icon-copyright.svg" alt="prob"/>
-            <p class="text-wrapper">Copyright Rimel 2022. All right reserved</p>
-          </div>
+         
         </div>
       </div>
       <div class="frame-2">
