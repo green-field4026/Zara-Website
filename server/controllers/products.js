@@ -75,7 +75,7 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      await Product.create({ name: req.body.name, released_on: req.body.released_on });
+      await Product.create( req.body);
       res.json({
         status: 'success',
         message: 'Product added successfully!!!',
