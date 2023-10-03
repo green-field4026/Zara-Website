@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Navbar.css"
+import {Link} from "react-router-dom";
 const Navbar = () => {
   return (
     <div class="header">
@@ -7,10 +8,10 @@ const Navbar = () => {
          Exclusive
        </div>
          <ul className="options">
-            <li>Home</li>
-            <li>Contact</li>
-            <li>About</li>
-            <li>Sign Up</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/signup">Sing-Up</Link></li>
          </ul>
          <div className="serach">
          <input  type="text" placeholder="What are you looking for"/>
