@@ -3,7 +3,7 @@ import "../styles/Navbar.css"
 import {Link} from "react-router-dom";
 const Navbar = () => {
   return (
-    <div class="header">
+    <div className="header">
        <div className="logo">
          Exclusive
        </div>
@@ -15,7 +15,7 @@ const Navbar = () => {
          </ul>
          <div className="serach">
          <input  type="text" placeholder="What are you looking for"/>
-         <i class="fa-solid fa-magnifying-glass" ></i>
+         <i className="fa-solid fa-magnifying-glass" ></i>
          </div>
     </div>
   );

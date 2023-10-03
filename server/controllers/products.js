@@ -35,15 +35,15 @@ module.exports = {
   getAll: async (req, res, next) => {
     try {
       const products = await Product.findAll();
-      const productsList = products.map(product => ({
-        id: product.id,
-        name: product.name,
-        released_on: product.released_on
-      }));
+      // const productsList = products.map(product => ({
+      //   id: product.id,
+      //   name: product.name,
+      //   released_on: product.released_on
+      // }));
       res.json({
         status: 'success',
         message: 'Products list found!!!',
-        data: { products: productsList }
+        data: { products: products }
       });
     } catch (err) {
       next(err);
@@ -75,7 +75,7 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      await Product.create( req.body);
+      await Product.create(req.body);
       res.json({
         status: 'success',
         message: 'Product added successfully!!!',

@@ -3,7 +3,7 @@ import "../styles/Navbar.css"
 import {Link} from "react-router-dom";
 const HomeNav = () => {
   return (
-    <div class="header">
+    <div className="header">
        <div className="logo">
          Exclusive
        </div>
@@ -16,11 +16,11 @@ const HomeNav = () => {
          <div className="nav">
          <div className="serach">
          <input  type="text" placeholder="What are you looking for"/>
-         <i class="fa-solid fa-magnifying-glass" ></i>
+         <i className="fa-solid fa-magnifying-glass" ></i>
          </div>
          <div className="navigations">
-         <i class="fa-solid fa-cart-shopping"></i>
-         <i class="fa-regular fa-heart"></i>
+         <i className="fa-solid fa-cart-shopping"></i>
+         <i className="fa-regular fa-heart"></i>
          </div>
          </div>
     </div>
