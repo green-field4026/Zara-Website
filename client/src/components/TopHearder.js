@@ -4,9 +4,9 @@ const TopHearder = () => {
   return (
     <div class="top-header">
         <div class="div">
-          <p class="text-wrapper">
+          <span class="text-wrapper">
             Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-          </p>
+          </span>
           <div class="text-wrapper-2">ShopNow</div>
         </div>
         <div class="frame-2">

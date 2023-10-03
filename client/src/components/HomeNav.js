@@ -11,7 +11,7 @@ const HomeNav = () => {
             <li><Link  className="link" to="/">Home</Link></li>
             <li><Link  className="link" to="/contact">Contact</Link></li>
             <li><Link  className="link" to="/about">About</Link></li>
-            <li><Link className="link" to="/signup">Sing-Up</Link></li>
+            <li><Link className="link" to="/signup">Sign-up</Link></li>
          </ul>
          <div className="nav">
          <div className="serach">
