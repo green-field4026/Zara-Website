@@ -40,7 +40,9 @@ module.exports = (sequelize) => {
         },
       },
       state: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM({
+          values:['in Stock','out Of Stock']
+        }),
         allowNull: false,
         set(val) {
           this.setDataValue("state", val.trim());
