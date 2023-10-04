@@ -1,22 +1,117 @@
-
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import HomePage from "./components/HomePage"
-import SignUp from "./components/SignUp"
+import { Routes, Route, useNavigate } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
 import Contact from "./components/Contact"
+import AllProduct from "./components/AllProduct";
 import AboutUs from "./components/AboutUs";
+import axios from "axios";
 const App = () => {
+  const [alert, setAlert] = useState("");
+  const [roleAlert, setRoleAlert] = useState("");
+  const [logAlert,setLogAlert]= useState("")
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+
+
+
+
+  //fetch the data
+  const fetchProduct = async () => {
+    try {
+      const task = await axios.get("http://localhost:1337/products/");
+      setProducts(task.data);
+      console.log(task.data);
+    } catch (error) {}
+  };
+
+
+
+  //create a user
+  const createUser = async (e, input) => {
+    try {
+      if (input.password === "" || input.password.length < 8) {
+        setAlert(
+          "Invalid password. Your password must be at least 8 characters long."
+        );
+        return;
+      }
+      if (input.state !== "Buyer" && input.state !== "Seller") {
+        setRoleAlert("Invalid selection. Please choose either Buyer or Seller");
+        return;
+      }
+      e.preventDefault();
+      const task = await axios.post(
+        "http://localhost:1337/users/register",
+        input
+      );
+      navigate("/login");
+      console.log(task.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
+  //authenticate the login
+  const authenticate = async (input) => {
+    try {
+      const task = await axios.post(
+        "http://localhost:1337/users/authenticate",
+        input
+      );
+      console.log(task.data.message);
+      if (await task.data.message==="Invalid email/password!!!") {
+        setLogAlert("The email  you entered is incorrect. Please try again.")
+        return;
+      }
+      else{
+      }
+      localStorage.setItem("token", task.data.data.token);
+      localStorage.setItem("user", JSON.stringify(task.data.data.user));
+      console.log(task.data);
+      console.log(task.data.data.user);
+      console.log(task.data.data.token);
+      navigate("/");
+      
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
+
+
+  useEffect(() => {
+    // fetchProduct();
+  }, []);
+
+
+
+
+
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/signup" element={<SignUp />}></Route>
+        <Route
+          path="/login"
+          element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
+        >
+
+        </Route>
+        <Route
+          path="/signup"
+          element={
+            <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
+          }
+        ></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
+        <Route path="/allproduct" element={<AllProduct />}></Route>
       </Routes>
     </div>
   );
 };
-export default App
+export default App;
