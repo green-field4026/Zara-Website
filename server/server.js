@@ -15,6 +15,7 @@ app.use(express.json())
 app.set("TOKEN_SECRET", `${process.env.TOKEN_SECRET}`);
 // console.log(app.get("TOKEN_SECRET"));
 app.use(logger("dev"));
+console.log("jihed");
 app.use(bodyparser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.json({ Welcome: "to node.js" });
