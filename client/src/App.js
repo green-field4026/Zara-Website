@@ -4,7 +4,8 @@ import HomePage from "./components/HomePage";
 import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
 import AllProduct from "./components/AllProduct";
-// import Contact from "./components/Contact"
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 import AboutUs from "./components/AboutUs";
 import axios from "axios";
 const App = () => {
@@ -17,13 +18,14 @@ const App = () => {
 
 
 
-  //fetch the data
   const fetchProduct = async () => {
     try {
-      const task = await axios.get("http://localhost:1337/products/");
+      const task = await axios.get("http://localhost:1337/products/getAll");
       setProducts(task.data);
       console.log(task.data);
-    } catch (error) {}
+    } catch (error) {
+      throw error
+    }
   };
 
 
@@ -84,7 +86,7 @@ const App = () => {
 
 
   useEffect(() => {
-    // fetchProduct();
+    fetchProduct();
   }, []);
 
 
@@ -92,6 +94,7 @@ const App = () => {
 
 
   return (
+    <Provider store={store}>
     <div className="App">
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
@@ -112,6 +115,7 @@ const App = () => {
         <Route path="/allproduct" element={<AllProduct />}></Route>
       </Routes>
     </div>
+    </Provider>
   );
 };
 export default App;
