@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
@@ -6,6 +6,8 @@ import Footer from "./Footer";
 import Countdown from "./Countdown";
 import "../styles/HomePage.css";
 import contents from "../content";
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchProduct } from '../redux/productsSlice'
 import { Products } from "./products";
 const HomePage = () => {
   const currentDate = new Date();
@@ -13,6 +15,17 @@ const HomePage = () => {
     currentDate.getMonth() === 11 && currentDate.getDate() > 24
       ? currentDate.getFullYear() + 1
       : currentDate.getFullYear();
+      const product = useSelector(state => state.product)
+      const dispatch = useDispatch()
+
+
+
+      useEffect(() => {
+        dispatch(fetchProduct())
+      }, [])  
+
+      
+      console.log(product)  
   return (
     <div>
       <TopHearder />
