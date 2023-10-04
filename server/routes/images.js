@@ -12,4 +12,5 @@ router.post('/', create);
 router.get("/:userId",findOne)
 router.put("/userId",update)
 router.delete("/:userId",remove)
+
 module.exports = router;
