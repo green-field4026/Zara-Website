@@ -51,7 +51,7 @@ module.exports = {
   },
   updateById: async (req, res, next) => {
     try {
-      await Product.update({ name: req.body.name }, { where: { id: req.params.productId } });
+      await Product.update(req.body, { where: { id: req.params.productId } });
       res.json({
         status: 'success',
         message: 'Product updated successfully!!!',
@@ -82,7 +82,7 @@ module.exports = {
         data: null
       });
     } catch (err) {
-      next(err);
+      throw(err);
     }
   }
 };

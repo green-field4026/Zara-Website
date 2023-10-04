@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
   res.json({ Welcome: "to node.js" });
 });
 app.use('/users', users);
-app.use('/products', validateUser, products);
+app.use('/products', products);
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(204);
 });
