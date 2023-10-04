@@ -46,7 +46,7 @@ module.exports = {
         });
       }
     } catch (err) {
-      throw err
+      next(err)
     }
   },
 };

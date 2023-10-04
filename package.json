@@ -2,9 +2,8 @@
   "name": "draft",
   "version": "1.0.0",
   "description": "",
-  "main": "SignUp.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon ./server/server.js"
   },
   "keywords": [],
   "author": "",
