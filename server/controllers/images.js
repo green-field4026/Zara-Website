@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+// const router = express.Router();
 const { Image } = require("../models/images");
 
 module.exports = {
@@ -41,4 +41,4 @@ module.exports = {
   },
 };
 
-module.exports = router;
+// module.exports = router;
