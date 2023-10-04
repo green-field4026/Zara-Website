@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
+import AllProduct from "./components/AllProduct";
 // import Contact from "./components/Contact"
 import AboutUs from "./components/AboutUs";
 import axios from "axios";
@@ -12,7 +13,11 @@ const App = () => {
   const [logAlert,setLogAlert]= useState("")
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  // const[currentUser,setCurrentUser]= useState("")
+
+
+
+
+  //fetch the data
   const fetchProduct = async () => {
     try {
       const task = await axios.get("http://localhost:1337/products/");
@@ -20,6 +25,10 @@ const App = () => {
       console.log(task.data);
     } catch (error) {}
   };
+
+
+
+  //create a user
   const createUser = async (e, input) => {
     try {
       if (input.password === "" || input.password.length < 8) {
@@ -43,6 +52,9 @@ const App = () => {
       console.error(e);
     }
   };
+
+
+  //authenticate the login
   const authenticate = async (input) => {
     try {
       const task = await axios.post(
@@ -67,9 +79,18 @@ const App = () => {
       console.error(e);
     }
   };
+
+
+
+
   useEffect(() => {
     // fetchProduct();
   }, []);
+
+
+
+
+
   return (
     <div className="App">
       <Routes>
@@ -77,7 +98,9 @@ const App = () => {
         <Route
           path="/login"
           element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
-        ></Route>
+        >
+
+        </Route>
         <Route
           path="/signup"
           element={
@@ -86,6 +109,7 @@ const App = () => {
         ></Route>
         {/* <Route path="/contact" element={<Contact />}></Route> */}
         <Route path="/about" element={<AboutUs />}></Route>
+        <Route path="/allproduct" element={<AllProduct />}></Route>
       </Routes>
     </div>
   );

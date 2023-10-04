@@ -42,7 +42,7 @@
 }
 
 .container {
-  width: 80%;
+  width: 90%;
   margin: 50px auto;
   border-bottom: #d9d9d9 2px solid;
   padding-bottom: 50px;
@@ -203,6 +203,7 @@
   background: var(--Button2, #db4444);
   color: white;
   transition-duration: 0.7s;
+
 }
 
 #all-prod:hover {
@@ -396,4 +397,32 @@ height: 600px;
 
   #buy{
     text-decoration: underline;
+  }
+
+
+
+ .elemets{
+  display: inline-flex;
+justify-content: center;
+align-items: center;
+gap: 88px;
+width: 100%;
+ } 
+.oneElement{
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 24px;
+}
+  .oneElement i{
+    color: white;
+    border-radius: 50%;
+    padding: 20px;
+    background-color: black;
+    outline: 10px solid gray;
+  }
+
+.links{
+    text-decoration: none;
+    color: #0F6;
   }

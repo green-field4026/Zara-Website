@@ -13,7 +13,6 @@ const HomePage = () => {
     currentDate.getMonth() === 11 && currentDate.getDate() > 24
       ? currentDate.getFullYear() + 1
       : currentDate.getFullYear();
-  console.log(year);
   return (
     <div>
       <TopHearder />
@@ -126,7 +125,9 @@ const HomePage = () => {
             />
           ))}
         </div>
-        <button id="all-prod">View All Products</button>
+       <Link className="links" to="/allproduct"><button id="all-prod">View All Products</button></Link>
+          
+            
       </div>
 {/* category */}
 <div className="container">
@@ -299,6 +300,27 @@ const HomePage = () => {
   </div>
 </div>
    
+</div>
+<div className="container">
+   <div className="elemets">
+     <div className="oneElement">
+     <i class="fa-solid fa-truck"></i>
+        <h5>FREE AND FAST DELIVERY</h5>
+         <span>Free delivery for all orders over $140</span>
+     </div>
+
+     <div className="oneElement">
+     <i class="fa-solid fa-headphones"></i> 
+        <h5>24/7 CUSTOMER SERVICE</h5>
+         <span>Friendly 24/7 customer support</span>
+     </div>
+     <div className="oneElement">
+     <i class="fa-solid fa-shield-halved"></i>
+        <h5>MONEY BACK GUARANTEE</h5>
+         <span>We reurn money within 30 days</span>
+     </div>
+
+   </div>
 </div>
       <Footer />
     </div>
