@@ -6,15 +6,7 @@ const HomeNav = () => {
   const [currentUser, setCurrentuser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  const ref = useRef();
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (!ref?.current?.contains(event.target)) {
-        setOpen(false);
-      }
-      document.addEventListener("mousedown", handleClickOutside);
-    }}
-    , [ref])
+
   return (
     <div className="header">
       <div className="logo">Exclusive</div>

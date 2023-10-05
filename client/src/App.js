@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
 import Contact from "./components/Contact"
 import AllProduct from "./components/AllProduct";
+import ProductDetails from "./components/ProductDetails"
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import AboutUs from "./components/AboutUs";
@@ -19,19 +20,6 @@ const App = () => {
   const [logAlert,setLogAlert]= useState("")
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-
-
-
-
-  const fetchProduct = async () => {
-    try {
-      const task = await axios.get("http://localhost:1337/products/getAll");
-      setProducts(task.data);
-      console.log(task.data);
-    } catch (error) {
-      throw error
-    }
-  };
 
 
 
@@ -88,26 +76,32 @@ const App = () => {
   };
 
 
-
-
-  useEffect(() => {
-    fetchProduct();
-  }, []);
-
-
-
+const getData = ()=>{
+  axios.get("http://localhost:1337/products/getAll")
+  .then((res)=>{
+    console.log(res.data)
+    setProducts(res.data)
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+}
+  useEffect( ()=> {
+    getData()
+  }, [])  
+  
+// console.log(products)
 
 
   return (
     <Provider store={store}>
     <div className="App">
       <Routes>
-        <Route path="/" element={<HomePage />}></Route>
+      <Route path="/" element={<HomePage products={products}/>}></Route>
         <Route
           path="/login"
           element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
         >
-
         </Route>
         <Route
           path="/signup"
@@ -121,6 +115,7 @@ const App = () => {
         <Route path="/account" element={<Account/>}></Route>
         <Route path="/404" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
+        <Route path="/details" element={<ProductDetails />}></Route>
       </Routes>
     </div>
     </Provider>
