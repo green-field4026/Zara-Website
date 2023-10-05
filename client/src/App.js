@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
+import Contact from "./components/Contact"
 import AllProduct from "./components/AllProduct";
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
@@ -111,7 +112,7 @@ const App = () => {
             <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
           }
         ></Route>
-        {/* <Route path="/contact" element={<Contact />}></Route> */}
+        <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
         <Route path="/account" element={<Account/>}></Route>
