@@ -4,17 +4,16 @@ import mail from "../imgs/mail.svg"
 import btn from "../imgs/btn.png"
 import  TopHeader  from "../components/TopHearder";
 import HomeNav from "./HomeNav"
-import "../styles/Contact.css";
 import Footer from "./Footer";
 
 const Contact = () => {
     return (<div>
                 <TopHeader/>
               <HomeNav/>
-        <div className="contact">
-            <div className="div-2">
+        
+            <div className="container">
+           
             
-                <div className="frame-wrapper">
                     <div className="frame-8">
                         <div className="frame-9">
                             <div className="md-wrapper">
@@ -39,8 +38,8 @@ const Contact = () => {
                         <input className="placebox-info-instance" text="Your Massage" />
                         <img id="hover-image" type="button" src={btn} alt="Button Image"/>
                     </div>
-                </div>
-                <div className="div-wrapper">
+        
+              
                     <div className="frame-10">
                         <div className="frame-11">
                             <div className="frame-12">
@@ -65,9 +64,9 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+          
                
-            </div>
+ 
            
         </div>
          <Footer/></div>

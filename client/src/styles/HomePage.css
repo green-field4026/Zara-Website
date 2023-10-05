@@ -125,7 +125,7 @@
 }
 
 .productImage {
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 300px;
   height: 10rem;
 }
@@ -234,6 +234,7 @@
   align-items: center;
   gap: 16px;
   transition-duration: 0.7s;
+  cursor: pointer;
 }
 .oneCata i {
   font-size: 40px;
@@ -347,7 +348,7 @@ background: var(--Button1, #0F6);
     grid-column: 3 ;
     grid-row: 1 / 3;
     width: 570px;
-height: 600px;
+    height: 600px;
     
     
   }
@@ -427,5 +428,16 @@ gap: 24px;
 }
 
 .cardicons{
-  color:orange;
+  padding: 10px;
+  font-size: 17px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.cardicons:hover{
+  background-color: black;
+  color: white;
+
 }
