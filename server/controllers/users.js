@@ -20,34 +20,38 @@ module.exports = {
       const userInfo = await User.findOne({
         where: {
           email: req.body.email,
-        }
-        // },
-        // includes:["wishlist"]
+        },
       });
-        if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-          const token = jwt.sign(
-            { id: userInfo.id },
-            req.app.get("TOKEN_SECRET"),
-            {
-              expiresIn: "24h",
-            }
-          );
-          res.json({
-            status: "success",
-            message: "user found!!!",
-            data: { user: userInfo, token },
-          });
-        }
-      else
-       {
+      const userInfo2 = await User.findAll({
+        where: {
+          id: userInfo.id,
+        },
+        include: ["Wishlist"],
+        attributes: [],
+      });
+      const userInfo3 = await userInfo2.map((obj) => obj.Wishlist);
+      if (bcrypt.compareSync(req.body.password, userInfo.password)) {
+        const token = jwt.sign(
+          { id: userInfo.id },
+          req.app.get("TOKEN_SECRET"),
+          {
+            expiresIn: "24h",
+          }
+        );
+        res.json({
+          status: "success",
+          message: "user found!!!",
+          data: { user: userInfo, products: userInfo3, token },
+        });
+      } else {
         res.json({
           status: "error",
           message: "Invalid email/password!!!",
-          data: "error"
+          data: "error",
         });
       }
     } catch (err) {
-      next(err)
+      next(err);
     }
   },
 };

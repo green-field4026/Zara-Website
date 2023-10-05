@@ -8,6 +8,7 @@ const products = require("./routes/products");
 const db = require('../config/database'); 
 const users = require("./routes/users");
 const images = require("./routes/images");
+const wishlist = require("./routes/wishlist")
 var jwt = require('jsonwebtoken');
 dotenv.config();
 const app = express();
@@ -22,6 +23,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use('/users', users);
 app.use('/products', products);
 app.use('/images', images);
+app.use("/wishlist",wishlist)
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(204);
 });

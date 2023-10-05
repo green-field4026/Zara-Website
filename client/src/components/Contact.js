@@ -4,6 +4,7 @@ import mail from "../imgs/mail.svg"
 import btn from "../imgs/btn.png"
 import  TopHeader  from "../components/TopHearder";
 import HomeNav from "./HomeNav"
+
 import Footer from "./Footer";
 
 const Contact = () => {

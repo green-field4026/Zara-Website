@@ -1,12 +1,18 @@
-import React, { useState ,useRef ,useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../styles/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const HomeNav = () => {
   const [open, setOpen] = useState(false);
   const [currentUser, setCurrentuser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-
+  const logged = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const logOut =  () => {
+    localStorage.removeItem("user");
+    localStorage.removeItem("Wishlist");
+    localStorage.removeItem("token");
+  };
   return (
     <div className="header">
       <div className="logo">Exclusive</div>
@@ -27,9 +33,15 @@ const HomeNav = () => {
           </Link>
         </li>
         <li>
-          <Link className="link" to="/signup">
-            Sign-up
-          </Link>
+          {logged ? (
+            <Link className="link" to="/login" onClick={()=>logOut()}>
+              log Out
+            </Link>
+          ) : (
+            <Link className="link" to="/signup" >
+              Sign Up
+            </Link>
+          )}
         </li>
       </ul>
       <div className="nav">
@@ -39,7 +51,10 @@ const HomeNav = () => {
         </div>
         <div className="navigations">
           <i className="fa-solid fa-cart-shopping"></i>
-          <i className="fa-regular fa-heart"></i>
+          <i
+            className="fa-regular fa-heart"
+            onClick={() => navigate("/wishList")}
+          ></i>
           {currentUser && (
             <>
               <i
@@ -49,11 +64,23 @@ const HomeNav = () => {
               ></i>
               {open && (
                 <div className="dropdown">
-                  <div className="dropdownitem"><i className="fa-regular fa-user"></i>Manage My Account</div>
-                  <div className="dropdownitem"><i className="fa-solid fa-bag-shopping"></i>My Order</div>
-                  <div className="dropdownitem"><i className="fa-regular fa-circle-xmark"></i>My Cancellations</div>
-                  <div className="dropdownitem"><i className="fa-regular fa-star"></i>My Reviews</div>
-                  <div className="dropdownitem"><i className="fa-solid fa-arrow-right-from-bracket"></i>Logout</div>
+                  <div className="dropdownitem">
+                    <i className="fa-regular fa-user"></i>Manage My Account
+                  </div>
+                  <div className="dropdownitem">
+                    <i className="fa-solid fa-bag-shopping"></i>My Order
+                  </div>
+                  <div className="dropdownitem">
+                    <i className="fa-regular fa-circle-xmark"></i>My
+                    Cancellations
+                  </div>
+                  <div className="dropdownitem">
+                    <i className="fa-regular fa-star"></i>My Reviews
+                  </div>
+                  <div className="dropdownitem" onClick={()=>(logOut(),navigate("/login"))}>
+                    <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                  </div>
                 </div>
               )}
             </>

@@ -9,6 +9,7 @@ const LoginPage = ({logAlert, authenticate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  
   return (
     <div>
       <TopHearder />
@@ -49,7 +50,7 @@ const LoginPage = ({logAlert, authenticate }) => {
               >
                 Log In
               </button>
-              <button id="forg">Forget Password?</button>
+              <button id="forg" onClick={()=>navigate("/signup")}>Forget Password?</button>
             </div>
           </div>
         </div>

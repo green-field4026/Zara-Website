@@ -3,8 +3,8 @@ import  OneProduct  from './OneProduct'
 const CardGenerator=({products})=>{
   return (
     <div className="cards">
-    {products.map((oneElement) => (
-       <OneProduct oneElement={oneElement}/>
+    {products.map((oneElement,i) => (
+       <OneProduct oneElement={oneElement} key={i} index={i}/>
     ))}
   </div>
   )

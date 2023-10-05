@@ -3,11 +3,11 @@ const {Product} = require('../../config/database');
 module.exports = {
   getById: async (req, res, next) => {
     try {
-      const productInfo = await Product.findByPk(req.params.productId);
+      const productInfo = await Product.findByPk(req.params.productId,{include:["Images"]});
       res.json({
         status: 'success',
         message: 'Product found!!!',
-        data: { products: productInfo }
+        data:  productInfo 
       });
     } catch (err) {
       next(err);
@@ -18,7 +18,7 @@ module.exports = {
       where:{
           name:{
               [Op.like] : `%${req.params.name}%`
-          }
+          },include:["Images"]
           
       }
   })
@@ -28,7 +28,8 @@ module.exports = {
     const task = await Product.find({
       where:{
         category:req.params.category
-      }
+      },
+      include:["Images"]
     })
     res.json(task)
   },
