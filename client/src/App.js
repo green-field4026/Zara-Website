@@ -9,6 +9,7 @@ import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import AboutUs from "./components/AboutUs";
 import axios from "axios";
+import { Account } from "./components/Account";
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -114,6 +115,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
+        <Route path="/account" element={<Account/>}></Route>
       </Routes>
     </div>
     </Provider>
