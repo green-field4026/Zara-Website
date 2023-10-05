@@ -118,7 +118,10 @@ import frt from "../imgs/frt.png"
                     <div className="ellipse-3" />
                 </div>
            
+  
+
             </div>
+            
         </div>
          <Footer/>
         </div>
