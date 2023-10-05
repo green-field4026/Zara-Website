@@ -20,7 +20,7 @@ const HomeNav = () => {
          </div>
          <div className="navigations">
          <i class="fa-solid fa-cart-shopping"></i>
-         <i class="fa-regular fa-heart"></i>
+         <Link  className="link" to="/Wishlit"><i class="fa-regular fa-heart"></i></Link>
          </div>
          </div>
     </div>
