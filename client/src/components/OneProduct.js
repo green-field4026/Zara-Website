@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 const OneProduct=({oneElement,key})=>{
     console.log()
      return(
-        <Link to="/details"  state={{ from: oneElement}} className='cardlink'>
+        
              <div key={key} className='productCard'>
+                <Link to="/details"  state={{ from: oneElement}} className='cardlink'>
                  <img src={oneElement.Images[2].image_Url} alt='product-img' className='productImage'></img>
-
-                 <FaShoppingCart className={"productCard__cart cardicons"} />
-                 <FaRegBookmark className={"productCard__wishlist cardicons"} />
-                 <FaFireAlt className={"productCard__fastSelling cardicons"} />
+                 </Link>
+                <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
+                <i class="fa-regular fa-heart productCard__wishlist cardicons"></i>
 
                  <div className='productCard__content'>
                      <h3 className='productName'>{oneElement.name}</h3>
@@ -20,15 +20,14 @@ const OneProduct=({oneElement,key})=>{
                      </div>
                      <div className='displayStack__2'>
                          <div className='productRating'>
-                             {[...Array(5)].map((index,i) => (
+                             {[...Array(Math.trunc(oneElement.rate))].map((index,i) => (
                                  <FaStar id={`${index+ 1 }`} key={i} />
                              ))}
                          </div>
-                         <div className='productTime'>{5}</div>
+                         <div className='productTime'>{oneElement.rate}</div>
                      </div>
                  </div>
              </div>
-        </Link>
      )
  }
  export default OneProduct
