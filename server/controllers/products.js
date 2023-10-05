@@ -32,26 +32,19 @@ module.exports = {
     })
     res.json(task)
   },
-  getAll: async (req, res, next) => {
+  getAll: async (req, res) => {
     try {
-      const products = await Product.findAll();
-      // const productsList = products.map(product => ({
-      //   id: product.id,
-      //   name: product.name,
-      //   released_on: product.released_on
-      // }));
-      res.json({
-        status: 'success',
-        message: 'Products list found!!!',
-        data: { products: products }
+      const products = await Product.findAll({
+        include:["Images"]
       });
+      res.json(products);
     } catch (err) {
-      next(err);
+       throw(err);
     }
   },
   updateById: async (req, res, next) => {
     try {
-      await Product.update({ name: req.body.name }, { where: { id: req.params.productId } });
+      await Product.update(req.body, { where: { id: req.params.productId } });
       res.json({
         status: 'success',
         message: 'Product updated successfully!!!',
@@ -75,14 +68,14 @@ module.exports = {
   },
   create: async (req, res, next) => {
     try {
-      await Product.create(req.body);
+      await Product.bulkCreate(req.body);
       res.json({
         status: 'success',
         message: 'Product added successfully!!!',
         data: null
       });
     } catch (err) {
-      next(err);
+      throw(err);
     }
   }
 };
