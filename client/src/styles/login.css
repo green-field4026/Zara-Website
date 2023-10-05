@@ -1,0 +1,184 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-wrap: wrap;
+  margin-top: 60px;
+  width: 100%;
+}
+input{
+    outline: none;
+}
+.img img {
+    width: 80%;
+  margin-right: 100px;
+}
+
+.img{
+    width: 60%;
+}
+.inputs h1 {
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  letter-spacing: 1.44px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.inputs {
+  width: 450;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.inputs input {
+  border: none;
+  border-bottom: 1px solid black;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  width: 100%;
+  padding: 7px;
+  transition-duration: 0.5s;
+}
+
+.inputs input:focus{
+    border-bottom: 1px solid  #db4444;
+  }
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 87px;
+}
+
+.buttons button {
+  display: flex;
+  padding: 16px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background-color: #db4444;
+  color: white;
+  transition-duration: 0.7s;
+  border: none;
+}
+.buttons button:hover{
+    background: var(--Button2, white);
+    color: #db4444;
+    border: 1px solid #db4444;
+  }
+#forg {
+  background-color: white;
+  color: var(--Secondary-2, #db4444);
+}
+
+
+
+
+.inpuuu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 500px;
+  height: 100%;
+}
+
+.buttons2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.buttons2 button {
+  display: flex;
+  width: 100%;
+  padding: 16px 122px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  border-radius: 4px;
+  background: var(--Button2, #db4444);
+  color: white;
+  transition-duration: 0.7s;
+}
+
+
+.buttons2 button:hover {
+    background: var(--Button2, white);
+    color: #db4444;
+    border: 1px solid #db4444;
+  }
+
+
+
+
+
+
+
+
+#google {
+  background: var(--Button2, white);
+  color: #db4444;
+  border: 1px solid #db4444;
+  transition-duration: 0.7s;
+}
+
+#google i {
+  color: #db4444;
+}
+
+
+
+#google:hover{
+    background: var(--Button2, #db4444);
+    color: white;
+    border: 1px solid white;
+  }
+  #google:hover i{
+    color: white
+  }
+    
+
+.text2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+#log{
+    margin-left: 10px;
+    text-decoration: underline;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+#log:hover{
+    color: #db4444;
+}
+
+#role{
+  padding: 10px;
+  width: 50%;
+  border: 1px solid #db4444;
+  outline: none;
+}
+
