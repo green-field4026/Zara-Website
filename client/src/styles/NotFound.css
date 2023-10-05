@@ -1,0 +1,62 @@
+.NotFound {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.NotFound .div-2 {
+    background-color: #ffffff;
+    height: 800px;
+    overflow: hidden;
+    position: relative;
+    width: 1437px;
+}
+
+.NotFound .top-header-instance{ left: 0 !important;
+position: absolute !important;
+top: 0 !important;}
+
+.NotFound .frame-8 {
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 40px;
+    left: 306px;
+    position: absolute;
+    top: 383px;
+}
+
+.NotFound .text-wrapper-8 {
+    color: #000000;
+    font-family: var(--heading-110px-medium-font-family);
+    font-size: var(--heading-110px-medium-font-size);
+    font-style: var(--heading-110px-medium-font-style);
+    font-weight: var(--heading-110px-medium-font-weight);
+    left: 0;
+    letter-spacing: var(--heading-110px-medium-letter-spacing);
+    line-height: var(--heading-110px-medium-line-height);
+    position: relative;
+    top: 0;
+    white-space: wrap;
+}
+
+.NotFound .text-wrapper-9 {
+    color: var(--text-2);
+    font-family: var(--title-16px-regular-font-family);
+    font-size: var(--title-16px-regular-font-size);
+    font-style: var(--title-16px-regular-font-style);
+    font-weight: var(--title-16px-regular-font-weight);
+    letter-spacing: var(--title-16px-regular-letter-spacing);
+    line-height: var(--title-16px-regular-line-height);
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.NotFound .button-instance {
+    left: 571px !important;
+    position: absolute !important;
+    top: 642px !important;
+}

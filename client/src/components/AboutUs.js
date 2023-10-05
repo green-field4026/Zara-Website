@@ -85,6 +85,8 @@ import frt from "../imgs/frt.png"
            
             
            
+  
+
             </div>
             
     );
