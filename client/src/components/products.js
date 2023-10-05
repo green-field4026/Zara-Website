@@ -18,8 +18,8 @@
                      </div>
                      <div className='displayStack__2'>
                          <div className='productRating'>
-                             {[...Array(props.rating)].map((index) => (
-                                 <FaStar id={index + 1 } key={index} />
+                             {[...Array(props.rating)].map((index,i) => (
+                                 <FaStar id={`${index + 1 }`} key={i} />
                              ))}
                          </div>
                          <div className='productTime'>{props.timeLeft} days left</div>

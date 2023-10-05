@@ -51,17 +51,17 @@ const HomeNav = () => {
           {currentUser && (
             <>
               <i
-                class="fa-solid fa-user"
+                className="fa-solid fa-user"
                 id="profile"
                 onClick={() => setOpen(!open)}
               ></i>
               {open && (
                 <div className="dropdown">
-                  <div className="dropdownitem"><i class="fa-regular fa-user"></i>Manage My Account</div>
-                  <div className="dropdownitem"><i class="fa-solid fa-bag-shopping"></i>My Order</div>
-                  <div className="dropdownitem"><i class="fa-regular fa-circle-xmark"></i>My Cancellations</div>
-                  <div className="dropdownitem"><i class="fa-regular fa-star"></i>My Reviews</div>
-                  <div className="dropdownitem"><i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</div>
+                  <div className="dropdownitem"><i className="fa-regular fa-user"></i>Manage My Account</div>
+                  <div className="dropdownitem"><i className="fa-solid fa-bag-shopping"></i>My Order</div>
+                  <div className="dropdownitem"><i className="fa-regular fa-circle-xmark"></i>My Cancellations</div>
+                  <div className="dropdownitem"><i className="fa-regular fa-star"></i>My Reviews</div>
+                  <div className="dropdownitem"><i className="fa-solid fa-arrow-right-from-bracket"></i>Logout</div>
                 </div>
               )}
             </>
