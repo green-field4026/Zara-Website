@@ -4,7 +4,7 @@ module.exports = (sequelize) => {
     "Images",
     {
       image_Url: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       altText: {

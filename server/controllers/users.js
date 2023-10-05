@@ -20,8 +20,9 @@ module.exports = {
       const userInfo = await User.findOne({
         where: {
           email: req.body.email,
-          
-        },
+        }
+        // },
+        // includes:["wishlist"]
       });
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
           const token = jwt.sign(

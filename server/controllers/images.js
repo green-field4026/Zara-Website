@@ -1,6 +1,6 @@
 const express = require("express");
 // const router = express.Router();
-const { Image } = require("../models/images");
+const { Image } = require("../../config/database");
 
 module.exports = {
   findAll: async (req, res) => {

@@ -8,7 +8,7 @@ const {
   remove,
 } = require("../controllers/images");
 router.get('/', findAll);
-router.post('/', create);
+router.post('/add', create);
 router.get("/:userId",findOne)
 router.put("/userId",update)
 router.delete("/:userId",remove)

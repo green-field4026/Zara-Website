@@ -7,6 +7,7 @@ const logger = require("morgan");
 const products = require("./routes/products");
 const db = require('../config/database'); 
 const users = require("./routes/users");
+const images = require("./routes/images");
 var jwt = require('jsonwebtoken');
 dotenv.config();
 const app = express();
@@ -16,14 +17,15 @@ app.set("TOKEN_SECRET", `${process.env.TOKEN_SECRET}`);
 // console.log(app.get("TOKEN_SECRET"));
 app.use(logger("dev"));
 app.use(bodyparser.urlencoded({ extended: false }));
-app.get("/", (req, res) => {
-  res.json({ Welcome: "to node.js" });
-});
+
+
 app.use('/users', users);
 app.use('/products', products);
+app.use('/images', images);
 app.get('/favicon.ico', function(req, res) {
   res.sendStatus(204);
 });
+
 function validateUser(req, res, next) {
   jwt.verify(req.headers['x-access-token'], req.app.get('TOKEN_SECRET'), function(err, decoded) {
     if (err) {
@@ -48,7 +50,6 @@ app.use(function(req, res, next) {
    else 
      res.status(500).json({message: "Something looks wrong :( !!!"});
  });
- const server =  app.listen(1337, () => {
+  app.listen(1337, () => {
   console.log("node server Listening on port 1337");
 });
-server.timeout = 500000
