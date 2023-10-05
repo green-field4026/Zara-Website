@@ -1,31 +1,29 @@
-import React,{useEffect} from "react";
 import { Link } from "react-router-dom";
 import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
 import Footer from "./Footer";
 import Countdown from "./Countdown";
 import "../styles/HomePage.css";
-import contents from "../content";
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchProduct } from '../redux/productsSlice'
-import { Products } from "./products";
+import CardGenerator from "./CardGenerator";
+import {useDispatch, useSelector } from "react-redux";
+import {fetchProduct} from "../redux/productsSlice"
+import { useEffect } from "react";
 const HomePage = () => {
+
+const dispatsh = useDispatch()
+const currentProducts = useSelector(state => state.getProducts.value)
   const currentDate = new Date();
   const year =
-    currentDate.getMonth() === 11 && currentDate.getDate() > 24
-      ? currentDate.getFullYear() + 1
-      : currentDate.getFullYear();
-      const product = useSelector(state => state.product)
-      const dispatch = useDispatch()
+  currentDate.getMonth() === 11 && currentDate.getDate() > 24
+    ? currentDate.getFullYear() + 1
+    : currentDate.getFullYear();
 
+ 
+    useEffect(()=>{
+      dispatsh(fetchProduct())
+    },[])
 
-
-      useEffect(() => {
-        dispatch(fetchProduct())
-      }, [])  
-
-      
-      console.log(product)  
+console.log("current",currentProducts)
   return (
     <div>
       <TopHearder />
@@ -125,20 +123,9 @@ const HomePage = () => {
             </div>
         </div>
 
-        <div className="cards">
-          {contents.map((contents) => (
-            <Products
-              key={contents.id}
-              image={contents.image}
-              name={contents.name}
-              price={contents.price}
-              totalSales={contents.totalSales}
-              timeLeft={contents.timeLeft}
-              rating={contents.rating}
-            />
-          ))}
-        </div>
-       <Link className="links" to="/allproduct"><button id="all-prod">View All Products</button></Link>
+        <CardGenerator products={currentProducts.slice(0,4)}/>
+
+       <Link className="links" to="/allproduct"  state={{ from: currentProducts}}><button id="all-prod">View All Products</button></Link>
           
             
       </div>
@@ -206,17 +193,7 @@ const HomePage = () => {
         </div>
 
         <div className="cards">
-          {contents.map((contents) => (
-            <Products
-              key={contents.id}
-              image={contents.image}
-              name={contents.name}
-              price={contents.price}
-              totalSales={contents.totalSales}
-              timeLeft={contents.timeLeft}
-              rating={contents.rating}
-            />
-          ))}
+        <CardGenerator products={currentProducts.slice(10,14)}/>
         </div>
       </div>
       <div className="container">
@@ -249,21 +226,11 @@ const HomePage = () => {
             </div>
         </div>
 
-        <div className="cards">
-          {contents.map((contents) => (
-            <Products
-              key={contents.id}
-              image={contents.image}
-              name={contents.name}
-              price={contents.price}
-              totalSales={contents.totalSales}
-              timeLeft={contents.timeLeft}
-              rating={contents.rating}
-            />
-          ))}
-        </div>
-        <button id="all-prod">View All Products</button>
+        <CardGenerator products={currentProducts.slice(6,14)}/>
+        <Link className="links" to="/allproduct"  state={{ from: currentProducts}}><button id="all-prod">View All Products</button></Link>
       </div>
+
+
      <div className="container">
         <div className="title">
           <div className="carre"></div>
@@ -314,6 +281,8 @@ const HomePage = () => {
 </div>
    
 </div>
+
+
 <div className="container">
    <div className="elemets">
      <div className="oneElement">
@@ -335,6 +304,8 @@ const HomePage = () => {
 
    </div>
 </div>
+
+
       <Footer />
     </div>
   );

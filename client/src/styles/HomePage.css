@@ -109,19 +109,13 @@
   flex-wrap: wrap;
 }
 
-.productList {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 2rem;
-}
 
 .productCard {
   position: relative;
   background-color: #f5f5f5;
   margin: 0.5rem;
-  flex: 1 0 25rem;
-  max-width: 300px;
-  max-height: 40rem;
+  width: 300px;
+  height: 23rem;
   transition: 0.2s;
 }
 
@@ -132,8 +126,8 @@
 
 .productImage {
   margin-top: 1rem;
-  max-width: 100%;
-  height: auto;
+  width: 300px;
+  height: 10rem;
 }
 
 .productCard__cart {
@@ -426,3 +420,12 @@ gap: 24px;
     text-decoration: none;
     color: #0F6;
   }
+
+.cardlink{
+  color: black;
+  text-decoration: none;
+}
+
+.cardicons{
+  color:orange;
+}
