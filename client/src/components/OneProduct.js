@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+
 const OneProduct = ({ oneElement, index }) => {
   const Users = JSON.parse(localStorage.getItem("user"));
   const UserId = Users.id;
@@ -29,25 +30,25 @@ const OneProduct = ({ oneElement, index }) => {
   };
   
   return (
+ <div key={index} className="productCard">
     <Link to="/details" state={{ from: oneElement }} className="cardlink">
-      <div key={index} className="productCard">
+     
         <img
           src={oneElement.Images[2].image_Url}
           alt="product-img"
           className="productImage"
         ></img>
+</Link>
 
-        <FaShoppingCart className={"productCard__cart cardicons"} />
-        <FaRegBookmark
-          onClick={() =>
+          <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
+  <i class="fa-regular fa-heart productCard__wishlist cardicons"  onClick={() =>
             AddWishlist({
               UserId: UserId,
               ProductId: oneElement.id,
             })
-          }
-          className={"productCard__wishlist cardicons"}
-        />
-        <FaFireAlt className={"productCard__fastSelling cardicons"} />
+          }></i>
+       
+       
 
         <div className="productCard__content">
           <h3 className="productName">{oneElement.name}</h3>
@@ -59,15 +60,16 @@ const OneProduct = ({ oneElement, index }) => {
           </div>
           <div className="displayStack__2">
             <div className="productRating">
-              {[...Array(5)].map((index, i) => (
+              {[...Array(Math.trunc(oneElement.rate))].map((index, i) => (
                 <FaStar id={`${index + 1}`} key={i} />
               ))}
             </div>
-            <div className="productTime">{5}</div>
+            <div className="productTime">{oneElement.rate}</div>
           </div>
         </div>
       </div>
-    </Link>
+    
   );
 };
 export default OneProduct;
+
