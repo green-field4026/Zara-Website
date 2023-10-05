@@ -65,6 +65,7 @@ const App = () => {
       }
       localStorage.setItem("token", task.data.data.token);
       localStorage.setItem("user", JSON.stringify(task.data.data.user));
+      localStorage.setItem("Wishlist", JSON.stringify(task.data.data.products))
       console.log(task.data);
       console.log(task.data.data.user);
       console.log(task.data.data.token);
@@ -79,7 +80,6 @@ const App = () => {
 const getData = ()=>{
   axios.get("http://localhost:1337/products/getAll")
   .then((res)=>{
-    console.log(res.data)
     setProducts(res.data)
   })
   .catch((err)=>{
