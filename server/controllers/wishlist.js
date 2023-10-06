@@ -36,6 +36,7 @@ module.exports = {
                 ProductId:req.params.ProductId
             }
         })
+        const data = await 
         res.json(task)
     } catch (e) {
         throw e
