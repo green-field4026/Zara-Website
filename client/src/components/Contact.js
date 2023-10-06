@@ -41,6 +41,7 @@ const Contact = () => {
             <div className="bigInputs">
                 <textarea placeholder="Your Message"/>
             </div>
+            <button id="view">Send Massage</button>
 
           </div>
         </div>

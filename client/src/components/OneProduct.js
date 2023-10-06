@@ -1,14 +1,25 @@
 import axios from "axios";
 import {
-  FaShoppingCart,
-  FaRegBookmark,
   FaStar,
-  FaFireAlt,
 } from "react-icons/fa";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom";
 
 const logged = localStorage.getItem("token");
 const OneProduct = ({ oneElement, index }) => {
+const notify = () => {
+    toast.info(oneElement.name +" added to wishlist", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+  }
   const Users = JSON.parse(localStorage.getItem("user"));
   const UserId = Users?Users.id : "";
   const getWishlist = async (id) => {
@@ -40,12 +51,17 @@ const OneProduct = ({ oneElement, index }) => {
         ></img>
 </Link>
 
-          {logged?<i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>:null}
- { logged?<i class="fa-regular fa-heart productCard__wishlist cardicons"  onClick={() =>
-            AddWishlist({
-              UserId: UserId,
-              ProductId: oneElement.id,
-            })
+          {logged?<i  class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>:null}
+         
+ { logged?<i class="fa-regular fa-heart productCard__wishlist cardicons"   onClick={() =>{
+   notify()
+   AddWishlist({
+    UserId: UserId,
+    ProductId: oneElement.id,
+  }); 
+ }
+
+           
           }></i>:null}
        
        
@@ -67,6 +83,7 @@ const OneProduct = ({ oneElement, index }) => {
             <div className="productTime">{oneElement.rate}</div>
           </div>
         </div>
+       
       </div>
     
   );

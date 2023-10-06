@@ -13,7 +13,7 @@ import axios from "axios";
 import { Account } from "./components/Account";
 import NotFound from "./components/NotFound";
 import WishList from "./components/WishList";
-
+import { ToastContainer } from 'react-toastify';
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -118,6 +118,18 @@ const getData = ()=>{
         <Route path="/details" element={<ProductDetails />}></Route>
       </Routes>
     </div>
+    <ToastContainer
+position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
     </Provider>
   );
 };
