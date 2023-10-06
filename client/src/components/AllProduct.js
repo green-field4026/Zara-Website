@@ -1,13 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
 import Footer from "./Footer";
 import { useLocation } from 'react-router-dom';
 import CardGenerator from "./CardGenerator"
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
 const AllProduct=() =>{
+  const dispatsh = useDispatch()
   const location = useLocation()
-  const { from } = location.state
-  console.log(from)
+ 
+  const { request,from } = location.state
+  const filteredProducts = useSelector((state) => state.getProducts.filterd);
+  console.log(request);
+  console.log("data",filteredProducts);
+  useEffect(()=>{
+    dispatsh(fetchProductByCategory(request))
+  },[])
   return (
     <>
      <TopHearder />
@@ -24,7 +33,7 @@ const AllProduct=() =>{
         </div>
 
         <div className="cards">
-        <CardGenerator products={from}/>
+        <CardGenerator products={from?from:filteredProducts}/>
         </div>
       </div>
       <Footer />

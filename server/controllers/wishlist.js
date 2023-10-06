@@ -20,6 +20,19 @@ module.exports = {
       throw e;
     }
   },
+  getOneProduct: async(req,res)=>{
+    try {
+      const task = await Wishlist.findOne({
+        where:{
+          UserId:req.params.UserId,
+          ProductId:req.params.ProductId
+        }
+      })
+      res.json(task)
+    } catch (err) {
+      throw err
+    }
+  },
   create:async(req,res)=>{
     try {
         const task = await Wishlist.create(req.body)
@@ -36,7 +49,7 @@ module.exports = {
                 ProductId:req.params.ProductId
             }
         })
-        const data = await 
+        
         res.json(task)
     } catch (e) {
         throw e
