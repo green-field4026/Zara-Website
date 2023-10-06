@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
-import CardGenerator from "./CardGenerator";
 import TopHeader from "./TopHearder";
-import OneProduct from "./OneProduct";
 import "../styles/WishList.css";
 import HomeNav from "./HomeNav";
 import axios from "axios";
@@ -22,7 +20,6 @@ const WishList = () => {
       );
       getWishlist(uId);
       setProducts(Products.filter((product) => product.id !== pId));
-
       // window.location.reload();
     } catch (e) {
       console.error(e);
@@ -53,22 +50,24 @@ const WishList = () => {
     <div>
       <TopHeader />
       <HomeNav />
-      <div className="container">
+      <div className="container" id="forwish">
+       
+
+        <div className="before-cards">
         <div className="title">
           <div className="carre"></div>
           <span className="titre"> Wishlist ({Products.length})</span>
         </div>
-        <div className="before-cards">
-          <div className="timer"></div>
           <div className="left-right">
-            <button id="view">Move All To Bag</button>
+           <button id="view">Move All To Bag</button>
           </div>
         </div>
 
-        <div className="cards">
-          {Products.map((obj, i) => (
+         <div className="cards">
+          {Products.length ?
+          Products.map((obj, i) => (
             <WishlistCards remove={remove} i={i} oneElement={obj} key={i} />
-          ))}
+          )):<h1> No Product in your WishList </h1>}
         </div>
       </div>
 
