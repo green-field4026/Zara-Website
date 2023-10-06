@@ -1,16 +1,23 @@
 import axios from "axios";
-import { useState } from "react";
-import {
-  FaShoppingCart,
-  FaRegBookmark,
-  FaStar,
-  FaFireAlt,
-} from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
+const logged = localStorage.getItem("token");
 const OneProduct = ({ oneElement, index }) => {
-  const logged = localStorage.getItem("token");
-  // const [prod, setProd] = useState("pending");
+  const notify = () => {
+    toast.info(oneElement.name + " added to wishlist", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
   const Users = JSON.parse(localStorage.getItem("user"));
   const UserId = Users ? Users.id : "";
   const getWishlist = async (id) => {
@@ -30,17 +37,6 @@ const OneProduct = ({ oneElement, index }) => {
       console.error(e);
     }
   };
-  const check = async (uId, pId) => {
-    try {
-      const task = await axios.get(
-        `http://localhost:1337/wishlist/product/${pId}/${uId}`
-      );
-      const res = (await task.data) ? true : false;
-      return res;
-    } catch (er) {
-      console.error(er);
-    }
-  };
 
   return (
     <div key={index} className="productCard">
@@ -51,21 +47,21 @@ const OneProduct = ({ oneElement, index }) => {
           className="productImage"
         ></img>
       </Link>
+
       {logged ? (
         <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
       ) : null}
+
       {logged ? (
         <i
           class="fa-regular fa-heart productCard__wishlist cardicons"
-          onClick={async() => (
-            console.log(await check(UserId, oneElement.id)===false),
-            !await check(UserId, oneElement.id)
-              ? AddWishlist({
-                  UserId: UserId,
-                  ProductId: oneElement.id,
-                })
-              : null
-          )}
+          onClick={() => {
+            notify();
+            AddWishlist({
+              UserId: UserId,
+              ProductId: oneElement.id,
+            });
+          }}
         ></i>
       ) : null}
 
