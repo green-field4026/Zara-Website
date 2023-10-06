@@ -68,9 +68,9 @@ const ProductDetails = () => {
 
           <div className="quantite">
               <div className="accumelator">
-                  <span className="sub" onClick={()=>{ quantite>0 ?setQuantite(quantite -1):null}}>-</span>
+                  <span className="sub" onClick={()=>{ quantite>0 ?setQuantite(quantite -1):""}}>-</span>
                   <span className="num">{quantite}</span>
-                  <span className="add"  onClick={()=>{quantite< from.stockNumber ?setQuantite(quantite +1):null}}>+</span>
+                  <span className="add"  onClick={()=>{quantite<from.stockNumber ?setQuantite(quantite +1):""}}>+</span>
               </div>
               <button>Add to card</button>
               <i class="fa-regular fa-heart"></i>

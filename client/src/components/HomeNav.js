@@ -33,11 +33,7 @@ const HomeNav = () => {
           </Link>
         </li>
         <li>
-          {logged ? (
-            <Link className="link" to="/login" onClick={()=>logOut()}>
-              log Out
-            </Link>
-          ) : (
+          {logged ? null: (
             <Link className="link" to="/signup" >
               Sign Up
             </Link>
@@ -50,11 +46,11 @@ const HomeNav = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="navigations">
-          <i className="fa-solid fa-cart-shopping"></i>
-          <i
+          {logged?<i className="fa-solid fa-cart-shopping"></i>:null}
+          {logged?<i
             className="fa-regular fa-heart"
             onClick={() => navigate("/wishList")}
-          ></i>
+          ></i>:null}
           {currentUser && (
             <>
               <i

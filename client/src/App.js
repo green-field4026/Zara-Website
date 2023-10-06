@@ -113,7 +113,7 @@ const getData = ()=>{
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
         <Route path="/account" element={<Account/>}></Route>
-        <Route path="/404" element={<NotFound/>}></Route>
+        <Route path="/*" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
         <Route path="/details" element={<ProductDetails />}></Route>
       </Routes>

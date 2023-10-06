@@ -7,10 +7,10 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
+const logged = localStorage.getItem("token");
 const OneProduct = ({ oneElement, index }) => {
   const Users = JSON.parse(localStorage.getItem("user"));
-  const UserId = Users.id;
+  const UserId = Users?Users.id : "";
   const getWishlist = async (id) => {
     try {
       const task = await axios.get(`http://localhost:1337/wishlist/${id}`);
@@ -40,13 +40,13 @@ const OneProduct = ({ oneElement, index }) => {
         ></img>
 </Link>
 
-          <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
-  <i class="fa-regular fa-heart productCard__wishlist cardicons"  onClick={() =>
+          {logged?<i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>:null}
+ { logged?<i class="fa-regular fa-heart productCard__wishlist cardicons"  onClick={() =>
             AddWishlist({
               UserId: UserId,
               ProductId: oneElement.id,
             })
-          }></i>
+          }></i>:null}
        
        
 
