@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import HomePage from "./components/HomePage";
-
 import SignUp from "./components/SignUp";
 import LoginPage from "./components/LoginPage";
 import Contact from "./components/Contact"
@@ -14,6 +13,7 @@ import axios from "axios";
 import { Account } from "./components/Account";
 import NotFound from "./components/NotFound";
 import WishList from "./components/WishList";
+
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -113,7 +113,7 @@ const getData = ()=>{
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
         <Route path="/account" element={<Account/>}></Route>
-        <Route path="/404" element={<NotFound/>}></Route>
+        <Route path="/*" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
         <Route path="/details" element={<ProductDetails />}></Route>
       </Routes>
