@@ -1,11 +1,12 @@
 import axios from "axios";
+import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
-const logged = localStorage.getItem("token");
 const OneProduct = ({ oneElement, index }) => {
+  const logged = localStorage.getItem("token");
   const notify = () => {
     toast.info(oneElement.name + " added to wishlist", {
       position: "top-right",
@@ -37,7 +38,17 @@ const OneProduct = ({ oneElement, index }) => {
       console.error(e);
     }
   };
-
+  const check = async (uId, pId) => {
+    try {
+      const task = await axios.get(
+        `http://localhost:1337/wishlist/product/${pId}/${uId}`
+      );
+      const res = (await task.data) ? true : false;
+      return res;
+    } catch (er) {
+      console.error(er);
+    }
+  };
   return (
     <div key={index} className="productCard">
       <Link to="/details" state={{ from: oneElement }} className="cardlink">
@@ -47,24 +58,24 @@ const OneProduct = ({ oneElement, index }) => {
           className="productImage"
         ></img>
       </Link>
-
       {logged ? (
         <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
       ) : null}
-
       {logged ? (
         <i
           class="fa-regular fa-heart productCard__wishlist cardicons"
-          onClick={() => {
-            notify();
-            AddWishlist({
-              UserId: UserId,
-              ProductId: oneElement.id,
-            });
-          }}
+          onClick={async () => (
+            console.log((await check(UserId, oneElement.id)) === false),
+            !(await check(UserId, oneElement.id))
+              ? (AddWishlist({
+                  UserId: UserId,
+                  ProductId: oneElement.id,
+                }),
+                notify())
+              : null
+          )}
         ></i>
       ) : null}
-
       <div className="productCard__content">
         <h3 className="productName">{oneElement.name}</h3>
         <div className="displayStack__1">
@@ -79,6 +90,7 @@ const OneProduct = ({ oneElement, index }) => {
           </div>
           <div className="productTime">{oneElement.rate}</div>
         </div>
+        <div className="productTime">{oneElement.rate}</div>
       </div>
     </div>
   );
