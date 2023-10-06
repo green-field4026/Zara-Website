@@ -14,7 +14,7 @@ module.exports = {
     }
   },
   searchByName: async (req,res,next)=>{
-    const task = await Product.find({
+    const task = await Product.findAll({
       where:{
           name:{
               [Op.like] : `%${req.params.name}%`
@@ -25,7 +25,7 @@ module.exports = {
   res.json(task)
   },
   searchByCategory: async(req,res,next)=>{
-    const task = await Product.find({
+    const task = await Product.findAll({
       where:{
         category:req.params.category
       },
