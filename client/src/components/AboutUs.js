@@ -38,19 +38,19 @@ const About = () => {
       </div>
       <div className="about-option">
         <div className="oneElement optionone">
-        <i class="fa-solid fa-store"></i>
+        <i className="fa-solid fa-store"></i>
           <span>We reurn money within 30 days</span>
         </div>
         <div className="oneElement optionone">
-        <i class="fa-solid fa-dollar-sign"></i>
+        <i className="fa-solid fa-dollar-sign"></i>
           <span>We reurn money within 30 days</span>
         </div>
         <div className="oneElement optionone">
-        <i class="fa-solid fa-bag-shopping"></i>
+        <i className="fa-solid fa-bag-shopping"></i>
           <span>We reurn money within 30 days</span>
         </div>
         <div className="oneElement optionone">
-        <i class="fa-solid fa-sack-dollar"></i>
+        <i className="fa-solid fa-sack-dollar"></i>
           <span>We reurn money within 30 days</span>
         </div>
       </div>
@@ -64,9 +64,9 @@ const About = () => {
             <span>Tom Cruise</span>
             <span>Managing Director</span>
             <div className="alliconnss">
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-instagram"></i>
             </div>
           </div>
         </div>
@@ -78,9 +78,9 @@ const About = () => {
             <span> Emma Watson</span>
             <span>Founder & Chairman</span>
             <div className="alliconnss">
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-instagram"></i>
             </div>
           </div>
         </div>
@@ -92,9 +92,9 @@ const About = () => {
             <span>Will Smith</span>
             <span>Product Designer</span>
             <div className="alliconnss">
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-linkedin"></i>
-              <i class="fa-brands fa-instagram"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-linkedin"></i>
+              <i className="fa-brands fa-instagram"></i>
             </div>
           </div>
         </div>
