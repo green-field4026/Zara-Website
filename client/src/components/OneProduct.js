@@ -39,7 +39,7 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
     try {
       const task = await axios.get(`http://localhost:1337/wishlist/${id}`);
       // setWishListData(task.data);
-      localStorage.setItem("Wishlist", JSON.stringify(task.data));
+      localStorage.setItem("Wishlist", JSON.stringify(task.data)|| []);
     } catch (e) {
       console.error(e);
     }
@@ -72,11 +72,11 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
           className="productImage"
         ></img>
 
-        <div className="addtocard" onClick={()=>(
+        {logged?<div className="addtocard" onClick={()=>(
           setCart([...cart,oneElement]),
           console.log(cart),
           titi()
-        )}>add to card</div>
+        )}>add to card</div>:null}
       </div>
 
       {logged ? (

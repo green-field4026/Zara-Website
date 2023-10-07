@@ -45,7 +45,7 @@ const LoginPage = ({logAlert, authenticate }) => {
             <div className="buttons">
               <button
                 onClick={() => (
-                  authenticate({ email, password })
+                  authenticate({ email, password }),localStorage.setItem("Wishlist",JSON.stringify([]))
                 )}
               >
                 Log In
