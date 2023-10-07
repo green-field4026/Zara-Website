@@ -15,6 +15,8 @@ import NotFound from "./components/NotFound";
 import WishList from "./components/WishList";
 import Cart from "./components/Cart"
 import { ToastContainer } from 'react-toastify';
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsOfUse from "./components/TermsOfUse";
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -125,6 +127,8 @@ const getData = ()=>{
         <Route path="/*" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
         <Route path="/details" element={<ProductDetails />}></Route>
+        <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+        <Route path="/terms" element={<TermsOfUse />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </div>

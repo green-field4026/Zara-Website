@@ -3,7 +3,10 @@ import "../styles/footer.css"
 import apple from "../imgs/appleStore.png"
 import google from "../imgs/googleplay.png"
 import qr from "../imgs/Qrcode.png"
+import { Link, useNavigate } from "react-router-dom";
 const Footer = () => {
+  
+  const navigate = useNavigate();
   return (
     <div className="footer">
       <div className="frame">
@@ -24,7 +27,7 @@ const Footer = () => {
             <p className="text-wrapper-4">Get 10% off your first order</p>
           </div>
           <div className="send-mail">
-            <div className="text-wrapper-5">Enter your email</div>
+            <input className="text-wrapper-5"   placeholder="Enter your email" />
             <i className="fa-solid fa-share"></i>
           </div>
         </div>
@@ -39,22 +42,22 @@ const Footer = () => {
           </div>
         </div>
         <div className="frame-4">
-          <div className="text-wrapper-6">Account</div>
+          <div className="text-wrapper-6"  >Account</div>
           <div className="frame-3">
-            <div className="text-wrapper-7">My Account</div>
-            <div className="text-wrapper-4">Login / Register</div>
+            <div className="text-wrapper-7" onClick={() => navigate("/account")}>My Account</div>
+            <div className="text-wrapper-4"  onClick={() => navigate("/signup")}>Login / Register</div>
             <div className="text-wrapper-4">Cart</div>
-            <div className="text-wrapper-4">Wishlist</div>
-            <div className="text-wrapper-4">Shop</div>
+            <div className="text-wrapper-4"      onClick={() => navigate("/wishList")}>Wishlist</div>
+            <div className="text-wrapper-4" onClick={()=>navigate("/allproduct")}>Shop</div>
           </div>
         </div>
         <div className="frame-4">
           <div className="text-wrapper-6">Quick Link</div>
           <div className="frame-3">
-            <div className="text-wrapper-7">Privacy Policy</div>
-            <div className="text-wrapper-4">Terms Of Use</div>
+            <div className="text-wrapper-7" onClick={()=>navigate("/privacy")}>Privacy Policy</div>
+            <div className="text-wrapper-4" onClick={()=>navigate("/terms")}>Terms Of Use</div>
             <div className="text-wrapper-4">FAQ</div>
-            <div className="text-wrapper-4">Contact</div>
+            <div className="text-wrapper-4"  onClick={() => navigate("/contact")} >Contact</div>
           </div>
         </div>
         <div className="frame-4">

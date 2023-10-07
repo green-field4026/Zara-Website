@@ -481,10 +481,11 @@
   position: relative;
   width: fit-content;
   margin-top: -1.5px;
+  background-color: #000000;
   opacity: 0.4;
   font-family: var(--title-16px-regular-font-family);
   font-weight: var(--title-16px-regular-font-weight);
-  color: var(--text);
+  color: white;
   font-size: var(--title-16px-regular-font-size);
   letter-spacing: var(--title-16px-regular-letter-spacing);
   line-height: var(--title-16px-regular-line-height);
