@@ -17,6 +17,7 @@ import Cart from "./components/Cart"
 import { ToastContainer } from 'react-toastify';
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
+
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
