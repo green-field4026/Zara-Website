@@ -8,7 +8,7 @@ import CardGenerator from "./CardGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
 import { useEffect, useState } from "react";
-const HomePage = () => {
+const HomePage = ({cart,setCart}) => {
   const dispatsh = useDispatch();
   const currentProducts = useSelector((state) => state.getProducts.value);
   const filteredProducts = useSelector((state) => state.getProducts.filterd);
@@ -127,7 +127,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <CardGenerator products={currentProducts.slice(0, 4)} />
+        <CardGenerator cart={cart} setCart={setCart} products={currentProducts.slice(0, 4)} />
 
         <Link
           className="links"

@@ -5,18 +5,18 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
-const OneProduct = ({ oneElement, index }) => {
+const OneProduct = ({ cart, setCart, oneElement, index }) => {
   const logged = localStorage.getItem("token");
   const notify = () => {
     toast.info(oneElement.name + " added to wishlist", {
       position: "bottom-right",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "dark",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
   };
   const Users = JSON.parse(localStorage.getItem("user"));
@@ -52,22 +52,22 @@ theme: "dark",
   return (
     <div key={index} className="productCard">
       <div className="cardcart">
-      
         <img
           src={oneElement.Images[2].image_Url}
           alt="product-img"
           className="productImage"
         ></img>
- 
-      <div className="addtocard">add to card</div>
-      </div>
-    
 
+        <div className="addtocard" onClick={()=>(
+          setCart([...cart,oneElement]),
+          console.log(cart)
+        )}>add to card</div>
+      </div>
 
       {logged ? (
         <Link to="/details" state={{ from: oneElement }} className="cardlink">
-       <i class="fa-regular fa-eye productCard__cart cardicons"></i>
-       </Link>
+          <i className="fa-regular fa-eye productCard__cart cardicons"></i>
+        </Link>
       ) : null}
       {logged ? (
         <i

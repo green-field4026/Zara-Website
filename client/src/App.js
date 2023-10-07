@@ -100,7 +100,7 @@ const getData = ()=>{
   useEffect( ()=> {
     getData()
   }, [])  
-  
+  const [cart,setCart]= useState([])
 // console.log(products)
 
 
@@ -108,7 +108,7 @@ const getData = ()=>{
     <Provider store={store}>
     <div className="App">
       <Routes>
-      <Route path="/" element={<HomePage products={products}/>}></Route>
+      <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products}/>}></Route>
         <Route
           path="/login"
           element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
@@ -122,14 +122,14 @@ const getData = ()=>{
         ></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
-        <Route path="/allproduct" element={<AllProduct />}></Route>
+        <Route path="/allproduct" element={<AllProduct  cart={cart} setCart={setCart} />}></Route>
         <Route path="/account" element={<Account modifyProfile={modifyProfile}/>}></Route>
         <Route path="/*" element={<NotFound/>}></Route>
-        <Route path="/wishList" element={<WishList/>}></Route>
-        <Route path="/details" element={<ProductDetails />}></Route>
+        <Route path="/wishList"  element={<WishList cart={cart} setCart={setCart}/>}></Route>
+        <Route path="/details"  element={<ProductDetails cart={cart} setCart={setCart} />}></Route>
         <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         <Route path="/terms" element={<TermsOfUse />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/cart"  element={<Cart cart={cart} setCart={setCart} />}></Route>
       </Routes>
     </div>
     <ToastContainer

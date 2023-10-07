@@ -23,7 +23,7 @@ const WishlistCards = ({ remove, oneElement, index }) => {
       </Link>
       <i
         onClick={() => (remove(oneElement.id, uId))}
-        class="fa-solid fa-trash productCard__cart cardicons"
+        className="fa-solid fa-trash productCard__cart cardicons"
       ></i>
       <div className="productCard__content">
         <h3 className="productName">{oneElement.name}</h3>

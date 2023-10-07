@@ -13,7 +13,7 @@ const Contact = () => {
           <div className="left">
             <div className="left-first" id="first-contact">
               <div className="content-icon">
-               <i class="fa-solid fa-phone"></i>
+               <i className="fa-solid fa-phone"></i>
                 <span>Call To Us</span>
                </div>
                <span>We are available 24/7, 7 days a week.</span>
@@ -22,7 +22,7 @@ const Contact = () => {
             </div>
             <div className="left-first">
               <div className="content-icon">
-              <i class="fa-regular fa-envelope"></i>
+              <i className="fa-regular fa-envelope"></i>
                 <span>Write To US</span>
                </div>
                <span>Fill out our form and we will contact you within 24 hours.</span>

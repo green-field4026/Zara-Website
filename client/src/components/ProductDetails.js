@@ -73,19 +73,19 @@ const ProductDetails = () => {
                   <span className="add"  onClick={()=>{quantite<from.stockNumber ?setQuantite(quantite +1):""}}>+</span>
               </div>
               <button>Add to card</button>
-              <i class="fa-regular fa-heart"></i>
+              <i className="fa-regular fa-heart"></i>
           </div>
 
           <div className="methods">
               <div className="one-medhod">
-                 <i class="fa-solid fa-truck"></i>
+                 <i className="fa-solid fa-truck"></i>
                  <div className="method-data">
                     <span>Free Delivery</span>
                     <span id="method-para">Enter your postal code for Delivery Availability</span>
                  </div>
               </div>
               <div className="one-medhod">
-              <i class="fa-solid fa-arrows-rotate"></i>
+              <i className="fa-solid fa-arrows-rotate"></i>
                  <div className="method-data">
                     <span>Return Delivery</span>
                     <span id="method-para">Free 30 Days Delivery Returns. Details</span>

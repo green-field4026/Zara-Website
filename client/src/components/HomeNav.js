@@ -14,6 +14,7 @@ const HomeNav = () => {
     localStorage.removeItem("Wishlist");
     localStorage.removeItem("token");
   };
+  // const cart = localStorage.getItem(JSON.parse("cart"))
   const search = async (name) => {
     try {
       const task = await axios.get(
@@ -54,7 +55,8 @@ const HomeNav = () => {
         </li>
       </ul>
       <div className="nav">
-        <div className="serach">
+          <div className="searchResult">  
+        <div className="search">
           <input
             type="text"
             onKeyDown={ (e) => {
@@ -65,8 +67,10 @@ const HomeNav = () => {
             }}
             placeholder="What are you looking for"
           />
+            <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
           {isOpen && (
-            <ul>
+            <ul className="searchTerms">
               {searchData.map((item, i) => (
                 <li key={i}>
                   {item.name }
@@ -75,10 +79,9 @@ const HomeNav = () => {
               ))}
             </ul>
           )}
-          <i className="fa-solid fa-magnifying-glass"></i>
-        </div>
+          </div>
         <div className="navigations">
-          {logged ? <i className="fa-solid fa-cart-shopping"></i> : null}
+          {logged ? <i className="fa-solid fa-cart-shopping"><Link className="link" to="/cart" ></Link></i> : null}
           {logged ? (
             <i
               className="fa-regular fa-heart"

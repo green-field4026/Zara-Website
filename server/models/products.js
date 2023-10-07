@@ -32,7 +32,22 @@ module.exports = (sequelize) => {
       },
       category: {
         type: DataTypes.ENUM({
-          values: ['gaming', 'computer','electronics','furniture','clothes','food','toys','Hygiene']
+          values: [
+            "Woman's Fashion",
+            "Man's Fashion",
+            "Electronics",
+            "Medicine",
+            "Sports & Outdoor",
+            "Baby's & Toys",
+            "Groceries & Pets",
+            "Health & Beauty",
+            "Phones",
+            "Computer",
+            "SmartWatch",
+            "Camera",
+            "Headphones",
+            "Gaming",
+          ],
         }),
         allowNull: false,
         set(val) {
@@ -41,7 +56,7 @@ module.exports = (sequelize) => {
       },
       state: {
         type: DataTypes.ENUM({
-          values:['in Stock','out Of Stock']
+          values: ["in Stock", "out Of Stock"],
         }),
         allowNull: false,
         set(val) {
