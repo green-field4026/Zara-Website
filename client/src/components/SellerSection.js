@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Footer from "./Footer";
 import TopHeader from "./TopHearder";
 import HomeNav from "./HomeNav";
-import { all } from 'axios';
+
 function SellerSection({ addProdSeller }) {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)

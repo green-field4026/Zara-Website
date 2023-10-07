@@ -148,7 +148,7 @@ const App = () => {
         <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         <Route path="/terms" element={<TermsOfUse />}></Route>
         <Route path="/cart"  element={<Cart cart={cart} setCart={setCart} />}></Route>
-        <Route path="/seller"  element={<SellerSection />}></Route>
+        <Route path="/seller"  element={<SellerSection addProdSeller={addProdSeller} />}></Route>
       </Routes>
     </div>
     <ToastContainer
