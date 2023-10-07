@@ -1,0 +1,119 @@
+.header {
+  display: flex;
+  width: 80%;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 0px;
+  border-bottom: #f5f5f5 2px solid;
+}
+.options {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 35%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.options li {
+  margin-left: 10px;
+  text-decoration: none;
+}
+.options .link {
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+  transition-duration: 1s;
+}
+
+.options .link:hover {
+  border-bottom: 1px solid black;
+  transform: scale(1.1);
+}
+.logo {
+  font-weight: 700;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.serach {
+  background-color: #f5f5f5;
+  display: flex;
+  padding: 7px 12px 7px 20px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+}
+
+.serach input {
+  border: none;
+  background-color: transparent;
+}
+.serach i {
+  color: black;
+}
+.navigations {
+  position: relative;
+}
+.navigations i {
+  color: black;
+  margin-left: 30px;
+  font-size: 20px;
+  transition-duration: 0.7s;
+}
+.navigations i:hover {
+  transform: scale(1.1);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+#profile {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  width: 230px;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: rgb(0,0,0);
+  background: linear-gradient(212deg, rgba(0,0,0,0.6713060224089635) 45%, rgba(197,74,223,0.5816701680672269) 75%);
+  backdrop-filter: blur(10px);
+  padding: 5px;
+}
+.dropdownitem{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  color: white;
+  transition-duration: 0.2s;
+  justify-content:left;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.dropdownitem:hover{
+  opacity: 0.8;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+.dropdownitem i{
+  margin-left: 5px;
+  margin-right: 10px;
+  color: white;
+}
