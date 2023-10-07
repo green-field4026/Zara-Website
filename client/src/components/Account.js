@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
-
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Account.css";
 import TopHearder from "./TopHearder";
 import Navbar from "./Navbar";
 
 export const Account = ({ modifyProfile }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -33,7 +35,7 @@ export const Account = ({ modifyProfile }) => {
               <li>My Returns</li>
               <li>My Cancellations</li>
             </ul>
-            <li>My WishList</li>
+            <li   onClick={() => navigate("/wishList")}>My WishList</li>
           </ul>
         </div>
 
