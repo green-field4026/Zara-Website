@@ -18,6 +18,7 @@ import { ToastContainer } from 'react-toastify';
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import SellerSection from "./components/SellerSection";
+import ScrollToTop from "./components/ScrollToTop"
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -65,16 +66,17 @@ const App = () => {
         setLogAlert("The email  you entered is incorrect. Please try again.")
         return;
       }
-      else {
+      else{
+        localStorage.setItem("token", task.data.data.token);
+        localStorage.setItem("user", JSON.stringify(task.data.data.user));
+        task.data.data.products[0]?localStorage.setItem("Wishlist", JSON.stringify(task.data.data.products)):null
+        console.log(task.data.data.products[0]);
+        console.log(task.data);
+        console.log(task.data.data.user);
+        console.log(task.data.data.token);
+        navigate("/");
       }
-      localStorage.setItem("token", task.data.data.token);
-      localStorage.setItem("user", JSON.stringify(task.data.data.user));
-      localStorage.setItem("Wishlist", JSON.stringify(task.data.data.products))
-      console.log(task.data);
-      console.log(task.data.data.user);
-      console.log(task.data.data.token);
-      navigate("/");
-
+      
     } catch (e) {
       console.error(e);
     }
@@ -120,45 +122,47 @@ const App = () => {
   }
   return (
     <Provider store={store}>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products} />}></Route>
-          <Route
-            path="/login"
-            element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
-          >
-          </Route>
-          <Route
-            path="/signup"
-            element={
-              <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
-            }
-          ></Route>
-          <Route path="/contact" element={<Contact />}></Route>
-          <Route path="/about" element={<AboutUs />}></Route>
-          <Route path="/allproduct" element={<AllProduct cart={cart} setCart={setCart} />}></Route>
-          <Route path="/account" element={<Account modifyProfile={modifyProfile} />}></Route>
-          <Route path="/*" element={<NotFound />}></Route>
-          <Route path="/wishList" element={<WishList cart={cart} setCart={setCart} />}></Route>
-          <Route path="/details" element={<ProductDetails cart={cart} setCart={setCart} />}></Route>
-          <Route path="/privacy" element={<PrivacyPolicy />}></Route>
-          <Route path="/terms" element={<TermsOfUse />}></Route>
-          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />}></Route>
-          <Route path="/seller" element={<SellerSection addProdSeller={addProdSeller} />}></Route>
-        </Routes>
-      </div>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
+    <div className="App">
+    <ScrollToTop /> 
+      <Routes>
+     
+      <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products}/>}></Route>
+        <Route
+          path="/login"
+          element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
+        >
+        </Route>
+        <Route
+          path="/signup"
+          element={
+            <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
+          }
+        ></Route>
+        <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/about" element={<AboutUs />}></Route>
+        <Route path="/allproduct" element={<AllProduct  cart={cart} setCart={setCart} />}></Route>
+        <Route path="/account" element={<Account modifyProfile={modifyProfile}/>}></Route>
+        <Route path="/*" element={<NotFound/>}></Route>
+        <Route path="/wishList"  element={<WishList cart={cart} setCart={setCart}/>}></Route>
+        <Route path="/details"  element={<ProductDetails cart={cart} setCart={setCart} />}></Route>
+        <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+        <Route path="/terms" element={<TermsOfUse />}></Route>
+        <Route path="/cart"  element={<Cart cart={cart} setCart={setCart} />}></Route>
+        <Route path="/seller"  element={<SellerSection />}></Route>
+      </Routes>
+    </div>
+    <ToastContainer
+position="bottom-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
     </Provider>
   );
 };

@@ -1,24 +1,28 @@
 import React ,{useState}from "react";
 
-const OneCartElement = ({obj,key,total,setTotal}) => {
+const OneCartElement = ({dummy,setDummy, cart,setCart,obj,index,total,setTotal}) => {
     const [quantity, setQuantity] = useState(1);
+    const tot = total
+    const finalTotal = obj.price * quantity
+    const removed = cart.indexOf(obj)
+    const cardData = cart
   return (
-    <tr key={key}>
+    <tr index={index}>
       <td className="cart-image">
         <img src={obj.Images[0].image_Url} />
         <span>{obj.name}</span>
-        <i className="fa-solid fa-circle-xmark"></i>
+        <i className="fa-solid fa-circle-xmark" onClick={()=>((removed>-1?(cardData.splice(removed,1),setCart(cardData)):null),setDummy(dummy+1)) }></i>
       </td>
       <td>{obj.price}</td>
       <td>
         <input
           type="number"
           defaultValue={quantity}
-          onChange={(e) => {setQuantity(e.target.value);}}
+          onChange={(e) => {setQuantity(e.target.value);setTotal(tot+finalTotal)}}
           className="inpuuus"
         />
       </td>
-      <td>{obj.price * quantity}</td>
+      <td>{finalTotal}</td>
     </tr>
   );
 };

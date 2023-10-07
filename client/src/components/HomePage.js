@@ -145,7 +145,7 @@ const HomePage = ({cart,setCart}) => {
         </div>
         <div className="before-cards">
           <div className="timer">
-            <h1>Browse By Category</h1>
+            <h1>Browse By  Category</h1>
           </div>
           <div className="left-right">
             <i className="fa-solid fa-arrow-left"></i>
@@ -177,25 +177,60 @@ const HomePage = ({cart,setCart}) => {
               <span>Computer</span>
             </div>
           </Link>
+          <Link
+            onClick={() => {
+              dispatsh(fetchProductByCategory("SmartWatch"));
+            }}
+            to="/allproduct"
+            state={{ request:"SmartWatch" }}
+            className="catalinks"
+          >
           <div className="oneCata">
             <i className="fa-solid fa-stopwatch"></i>
             <span>SmartWatch</span>
           </div>
+          </Link>
+          <Link
+            onClick={() => {
+              dispatsh(fetchProductByCategory("camera"));
+            }}
+            to="/allproduct"
+            state={{ request:"camera" }}
+            className="catalinks"
+          >
 
           <div className="oneCata">
             <i className="fa-solid fa-camera"></i>
             <span>Camera</span>
           </div>
-
+          </Link>
+          <Link
+            onClick={() => {
+              dispatsh(fetchProductByCategory("Headphones"));
+            }}
+            to="/allproduct"
+            state={{ request:"Headphones" }}
+            className="catalinks"
+          >
           <div className="oneCata">
             <i className="fa-solid fa-headphones"></i>
             <span>Headphones</span>
           </div>
+          </Link>
 
+          <Link
+            onClick={() => {
+              dispatsh(fetchProductByCategory("Gaming"));
+            }}
+            to="/allproduct"
+            state={{ request:"Gaming" }}
+            className="catalinks"
+          >
           <div className="oneCata">
             <i className="fa-solid fa-gamepad fa-bounce"></i>
             <span>Gaming</span>
           </div>
+          </Link>
         </div>
       </div>
 
@@ -215,7 +250,7 @@ const HomePage = ({cart,setCart}) => {
         </div>
 
         <div className="cards">
-          <CardGenerator products={currentProducts.slice(10, 14)} />
+          <CardGenerator  cart={cart} setCart={setCart} products={currentProducts.slice(10, 14)} />
         </div>
       </div>
       <div className="container">
@@ -246,7 +281,7 @@ const HomePage = ({cart,setCart}) => {
           </div>
         </div>
 
-        <CardGenerator products={currentProducts.slice(6, 14)} />
+        <CardGenerator  cart={cart} setCart={setCart} products={currentProducts.slice(6, 14)} />
         <Link
           className="links"
           to="/allproduct"

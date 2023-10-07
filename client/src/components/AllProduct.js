@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import CardGenerator from "./CardGenerator"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
-const AllProduct=() =>{
+const AllProduct=({cart,setCart}) =>{
   const dispatsh = useDispatch()
   const location = useLocation()
  
@@ -31,9 +31,8 @@ const AllProduct=() =>{
           <h1>All Products</h1>
           </div>
         </div>
-
         <div className="cards">
-        <CardGenerator products={from?from:filteredProducts}/>
+        <CardGenerator products={from?from:filteredProducts} cart={cart} setCart={setCart}/>
         </div>
       </div>
       <Footer />
