@@ -39,10 +39,10 @@ const Navbar = () => {
           </Link>
         )}
       </ul>
-      <div className="serach">
+      {location.pathname==="/signup" || "login"?null:<div className="serach">
         <input type="text" placeholder="What are you looking for" />
         <i className="fa-solid fa-magnifying-glass"></i>
-      </div>
+      </div>}
     </div>
   );
 };
