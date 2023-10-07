@@ -28,7 +28,7 @@ const WishList = () => {
   const getWishlist = async (id) => {
     try {
       const task = await axios.get(`http://localhost:1337/wishlist/${id}`);
-      localStorage.setItem("Wishlist", JSON.stringify(task.data));
+      localStorage.setItem("Wishlist", JSON.stringify(task.data)|| []);
     } catch (e) {
       console.error(e);
     }
@@ -43,7 +43,7 @@ const WishList = () => {
     }
   };
   useEffect(() => {
-    // if ( WishListData===[null]) {
+    // if (WishListData) {
       WishListData.map((obj) => getProducts(obj.ProductId));
     // }
     // console.log(WishListData===[null]);
