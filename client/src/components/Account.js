@@ -31,7 +31,7 @@ export const Account = ({ modifyProfile }) => {
               <li>Address Book</li>
               <li>My Payment Options</li>
             </ul>
-            <li>My Orders</li>
+            <li onClick={()=>navigate("/cart")}>My Orders</li>
             <ul>
               <li>My Returns</li>
               <li>My Cancellations</li>

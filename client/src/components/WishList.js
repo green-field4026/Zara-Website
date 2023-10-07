@@ -43,7 +43,10 @@ const WishList = () => {
     }
   };
   useEffect(() => {
-    WishListData.map((obj) => getProducts(obj.ProductId));
+    // if ( WishListData===[null]) {
+      WishListData.map((obj) => getProducts(obj.ProductId));
+    // }
+    // console.log(WishListData===[null]);
   }, []);
 
   return (
@@ -51,23 +54,24 @@ const WishList = () => {
       <TopHeader />
       <HomeNav />
       <div className="container" id="forwish">
-       
-
         <div className="before-cards">
-        <div className="title">
-          <div className="carre"></div>
-          <span className="titre"> Wishlist ({Products.length})</span>
-        </div>
+          <div className="title">
+            <div className="carre"></div>
+            <span className="titre"> Wishlist ({Products.length})</span>
+          </div>
           <div className="left-right">
-           <button id="view">Move All To Bag</button>
+            <button id="view">Move All To Bag</button>
           </div>
         </div>
 
-         <div className="cards">
-          {Products.length ?
-          Products.map((obj, i) => (
-            <WishlistCards remove={remove} i={i} oneElement={obj} key={i} />
-          )):<h1> Your Wishlist is Empty Please add more Products </h1>}
+        <div className="cards">
+          {Products.length ? (
+            Products.map((obj, i) => (
+              <WishlistCards remove={remove} i={i} oneElement={obj} key={i} />
+            ))
+          ) : (
+            <h1> Your Wishlist is Empty Please add more Products </h1>
+          )}
         </div>
       </div>
 

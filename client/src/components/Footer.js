@@ -5,7 +5,7 @@ import google from "../imgs/googleplay.png"
 import qr from "../imgs/Qrcode.png"
 import { Link, useNavigate } from "react-router-dom";
 const Footer = () => {
-  
+  const logged = localStorage.getItem("token");
   const navigate = useNavigate();
   return (
     <div className="footer">
@@ -45,7 +45,7 @@ const Footer = () => {
           <div className="text-wrapper-6"  >Account</div>
           <div className="frame-3">
             <div className="text-wrapper-7" onClick={() => navigate("/account")}>My Account</div>
-            <div className="text-wrapper-4"  onClick={() => navigate("/signup")}>Login / Register</div>
+            {!logged?<div className="text-wrapper-4"  ><span onClick={() => navigate("/login")}>Login</span> / <span onClick={() => navigate("/signup")}>Register</span></div>:null}
             <div className="text-wrapper-4">Cart</div>
             <div className="text-wrapper-4"      onClick={() => navigate("/wishList")}>Wishlist</div>
             <div className="text-wrapper-4" onClick={()=>navigate("/allproduct")}>Shop</div>
