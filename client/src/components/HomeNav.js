@@ -7,6 +7,8 @@ const HomeNav = () => {
   const [currentUser, setCurrentuser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
+  const [currentState, setcurrentState] = useState("Buyer")
+  
   const logged = localStorage.getItem("token");
   const navigate = useNavigate();
   const logOut = () => {
@@ -14,13 +16,16 @@ const HomeNav = () => {
     localStorage.removeItem("Wishlist");
     localStorage.removeItem("token");
   };
-  // const cart = localStorage.getItem(JSON.parse("cart"))
+  useEffect(()=>{
+    setcurrentState(currentUser.state)
+  })
   const search = async (name) => {
     try {
       const task = await axios.get(
         `http://localhost:1337/products/search/${name}`
       );
       setSearchData(task.data)
+      console.log(task)
     } catch (e) {
       console.error(e);
     }
@@ -53,32 +58,31 @@ const HomeNav = () => {
             </Link>
           )}
         </li>
+        <li>
+        { currentState === "Seller" ?
+          <Link className="link" to="/seller">
+            Add Product
+          </Link> : null}
+        </li>
       </ul>
       <div className="nav">
           <div className="searchResult">  
         <div className="search">
           <input
             type="text"
-            onKeyDown={ (e) => {
-              if (e.key === "Enter") {
-                search(e.target.value)
-                e.target.value !== "" ? setIsOpen(true) : setIsOpen(false);
-              }
-            }}
+            className="theone"
+            defaultValue={""}
+             onChange={(e)=>{search(e.target.value)}}
             placeholder="What are you looking for"
           />
             <i className="fa-solid fa-magnifying-glass"></i>
+           
             </div>
-          {isOpen && (
-            <ul className="searchTerms">
-              {searchData.map((item, i) => (
-                <li key={i}>
-                  {item.name }
-                  {item.price}
-                </li>
-              ))}
-            </ul>
-          )}
+            {searchData.length ? <ul className="tofind">
+            {searchData.map((item)=>{
+              return  <Link className="linkss" to="/details" state={{ from: item }}><li className="searchItem">{item.name}</li> </Link>
+            })}
+            </ul> :null}
           </div>
         <div className="navigations">
           {logged ?     <Link className="link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> </Link> : null}

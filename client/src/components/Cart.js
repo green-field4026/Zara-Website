@@ -3,13 +3,9 @@ import TopHearder from "./TopHearder";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import "../styles/Cart.css";
+import OneCartElement from "./OneCartElement"
 const Cart = ({ cart, setCart }) => {
-  const [quantity, setQuantity] = useState(1);
-  // localStorage.setItem("cart",JSON.stringify(cart))
-  useEffect(() => {
-    // setData(cart);
-  }, []);
-  console.log(cart);
+    const [total,setTotal]= useState(0)
   return (
     <div>
       <TopHearder />
@@ -28,22 +24,11 @@ const Cart = ({ cart, setCart }) => {
             <tbody>
               {cart
                 ? cart.map((obj, i) => {
-                  return(
-                    <tr key={i}>
-                      <td className="cart-image">
-                        <img src={obj.Images[0].image_Url} />
-                        <span>{obj.name}</span>
-                        <i className="fa-solid fa-circle-xmark"></i>
-                      </td>
-                      <td>{obj.price}</td>
-                      <td>
-                        <input type="number" defaultValue={quantity} onChange={(e)=>setQuantity(e.target.value)} className="inpuuus" />
-                      </td>
-                      <td>{obj.price*quantity}</td>
-                    </tr>)
+                  return  <OneCartElement obj={obj} key={i} total={total} setTotal={setTotal}/>
+                    
                   })
                  : null} 
-               {/* <tr><td>home</td></tr>  */}
+             
             </tbody>
           ) : (
             <tbody >
@@ -76,7 +61,7 @@ const Cart = ({ cart, setCart }) => {
                 </div>
                 <div className="section" id="total">
                   <span>Total:</span>
-                  <span>$1750</span>
+                  <span>${total}</span>
                 </div>
               </div>
             ) : null}

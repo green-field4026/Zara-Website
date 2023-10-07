@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import Footer from "./Footer";
-import { Link, useNavigate } from "react-router-dom";
-import "../styles/Account.css";
 import TopHearder from "./TopHearder";
 import Navbar from "./Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/Account.css";
+
 
 export const Account = ({ modifyProfile }) => {
   const navigate = useNavigate();
