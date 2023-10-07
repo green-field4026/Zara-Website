@@ -7,8 +7,8 @@ const HomeNav = () => {
   const [currentUser, setCurrentuser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
-  const [currentState, setcurrentState] = useState("Buyer")
-  
+  const [currentState, setcurrentState] = useState("Buyer");
+
   const logged = localStorage.getItem("token");
   const navigate = useNavigate();
   const logOut = () => {
@@ -16,16 +16,16 @@ const HomeNav = () => {
     localStorage.removeItem("Wishlist");
     localStorage.removeItem("token");
   };
-  useEffect(()=>{
-    setcurrentState(currentUser.state)
-  })
+  useEffect(() => {
+    setcurrentState(currentUser?currentUser.state:null);
+  });
   const search = async (name) => {
     try {
       const task = await axios.get(
         `http://localhost:1337/products/search/${name}`
       );
-      setSearchData(task.data)
-      console.log(task)
+      setSearchData(task.data);
+      console.log(task);
     } catch (e) {
       console.error(e);
     }
@@ -59,33 +59,45 @@ const HomeNav = () => {
           )}
         </li>
         <li>
-        { currentState === "Seller" ?
-          <Link className="link" to="/seller">
-            Add Product
-          </Link> : null}
+          {currentState === "Seller" ? (
+            <Link className="link" to="/seller">
+              Add Product
+            </Link>
+          ) : null}
         </li>
       </ul>
       <div className="nav">
-          <div className="searchResult">  
-        <div className="search">
-          <input
-            type="text"
-            className="theone"
-            defaultValue={""}
-             onChange={(e)=>{search(e.target.value)}}
-            placeholder="What are you looking for"
-          />
+        <div className="searchResult">
+          <div className="search">
+            <input
+              type="text"
+              className="theone"
+              defaultValue={""}
+              onChange={(e) => {
+                search(e.target.value);
+              }}
+              placeholder="What are you looking for"
+            />
             <i className="fa-solid fa-magnifying-glass"></i>
-           
-            </div>
-            {searchData.length ? <ul className="tofind">
-            {searchData.map((item)=>{
-              return  <Link className="linkss" to="/details" state={{ from: item }}><li className="searchItem">{item.name}</li> </Link>
-            })}
-            </ul> :null}
           </div>
+          {searchData.length ? (
+            <ul className="tofind">
+              {searchData.map((item) => {
+                return (
+                  <Link className="linkss" to="/details" state={{ from: item }}>
+                    <li className="searchItem">{item.name}</li>{" "}
+                  </Link>
+                );
+              })}
+            </ul>
+          ) : null}
+        </div>
         <div className="navigations">
-          {logged ?     <Link className="link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> </Link> : null}
+          {logged ? (
+            <Link className="link" to="/cart">
+              <i className="fa-solid fa-cart-shopping"></i>{" "}
+            </Link>
+          ) : null}
           {logged ? (
             <i
               className="fa-regular fa-heart"
@@ -100,8 +112,11 @@ const HomeNav = () => {
                 onClick={() => setOpen(!open)}
               ></i>
               {open && (
-                <div  className="dropdown">
-                  <div onClick={() => navigate("/account")} className="dropdownitem">
+                <div className="dropdown">
+                  <div
+                    onClick={() => navigate("/account")}
+                    className="dropdownitem"
+                  >
                     <i className="fa-regular fa-user"></i>Manage My Account
                   </div>
                   <div className="dropdownitem">

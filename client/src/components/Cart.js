@@ -5,6 +5,8 @@ import Footer from "./Footer";
 import "../styles/Cart.css";
 import OneCartElement from "./OneCartElement"
 const Cart = ({ cart, setCart }) => {
+  const [dummy,setDummy]= useState(0)
+
     const [total,setTotal]= useState(0)
   return (
     <div>
@@ -24,7 +26,7 @@ const Cart = ({ cart, setCart }) => {
             <tbody>
               {cart
                 ? cart.map((obj, i) => {
-                  return  <OneCartElement obj={obj} key={i} total={total} setTotal={setTotal}/>
+                  return  <OneCartElement dummy={dummy} setDummy={setDummy} cart={cart} setCart={setCart} obj={obj} key={i} index={i}  total={total} setTotal={setTotal}/>
                     
                   })
                  : null} 
