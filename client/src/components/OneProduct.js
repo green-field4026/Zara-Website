@@ -9,14 +9,14 @@ const OneProduct = ({ oneElement, index }) => {
   const logged = localStorage.getItem("token");
   const notify = () => {
     toast.info(oneElement.name + " added to wishlist", {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+      position: "bottom-right",
+autoClose: 5000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
     });
   };
   const Users = JSON.parse(localStorage.getItem("user"));
@@ -51,15 +51,23 @@ const OneProduct = ({ oneElement, index }) => {
   };
   return (
     <div key={index} className="productCard">
-      <Link to="/details" state={{ from: oneElement }} className="cardlink">
+      <div className="cardcart">
+      
         <img
           src={oneElement.Images[2].image_Url}
           alt="product-img"
           className="productImage"
         ></img>
-      </Link>
+ 
+      <div className="addtocard">add to card</div>
+      </div>
+    
+
+
       {logged ? (
-        <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
+        <Link to="/details" state={{ from: oneElement }} className="cardlink">
+       <i class="fa-regular fa-eye productCard__cart cardicons"></i>
+       </Link>
       ) : null}
       {logged ? (
         <i
@@ -88,9 +96,7 @@ const OneProduct = ({ oneElement, index }) => {
               <FaStar id={`${index + 1}`} key={i} />
             ))}
           </div>
-          <div className="productTime">{oneElement.rate}</div>
         </div>
-        <div className="productTime">{oneElement.rate}</div>
       </div>
     </div>
   );

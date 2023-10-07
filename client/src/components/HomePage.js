@@ -22,8 +22,6 @@ const HomePage = () => {
     dispatsh(fetchProduct());
     dispatsh(fetchProductByCategory("gaming"))
   }, []);
-  console.log(filteredProducts)
-  console.log(currentProducts);;
   return (
     <div>
       <TopHearder />
@@ -161,6 +159,7 @@ const HomePage = () => {
             }}
             to="/allproduct"
             state={{ request:"gaming" }}
+            className="catalinks"
           >
             <div className="oneCata">
               <i className="fa-solid fa-mobile-screen-button"></i>
@@ -171,6 +170,7 @@ const HomePage = () => {
               dispatsh(fetchProductByCategory("food"));
             }}
             to="/allproduct"
+            className="catalinks"
             state={{ request:"food"}}>
             <div className="oneCata">
               <i className="fa-solid fa-computer"></i>
