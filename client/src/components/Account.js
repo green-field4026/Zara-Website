@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import  Footer  from "./Footer";
 
 import "../styles/Account.css";
 import TopHearder from "./TopHearder";
 import Navbar from "./Navbar";
 
-export const Account = () => {
+export const Account = ({modifyProfile}) => {
+    const [name,setName]=useState('')
+    const [lastName,setLastName]=useState('')
+    const [email,setEmail]=useState('')
+    const [adresse,setAdresse]=useState('')
+    const [currentPassword,setcurrentPassword]=useState('')
+    const [newPassword,setNewPassword]=useState('')
+    const [confirmPassword,setConfirmPassword]=useState('')
+const [user,setUser]=useState(JSON.parse(localStorage.user))
     return (<div>  <TopHearder/>
     <Navbar/>
         <div className="account">
-         
+         {console.log(user.name)}
             <div className="div-2">
             
                 <p className="welcome-md-rimel">
@@ -33,34 +41,40 @@ export const Account = () => {
                     <div className="frame-20">
                         <div className="frame-21">
                             <div className="text-wrapper-22">First Name</div>
-                            <input />
+                            <input value={user.name}  onChange={(e)=>setName(e.target.value)} />
                         </div>
                         <div className="frame-21">
                             <div className="text-wrapper-22">Last Name</div>
-                            <input text="Rimel" />
+                            <input placeholder="LastName" onChange={(e)=>setLastName(e.target.value)}  />
                         </div>
                     </div>
                     <div className="frame-22">
                         <div className="frame-21">
                             <div className="text-wrapper-22">Email</div>
-                            <input divClassName="placebox-info-instance" text="rimel1111@gmail.com" />
+                            <input className="placebox-info-instance" onChange={(e)=>setEmail(e.target.value)} value={user.email} />
                         </div>
                         <div className="frame-21">
                             <div className="text-wrapper-22">Address</div>
-                            <input text="Kingston, 5236, United State" />
+                            <input placeholder="Adresse" onChange={(e)=>setAdresse(e.target.value)}/>
                         </div>
                     </div>
                     <div className="frame-23">
                         <div className="frame-21">
                             <div className="text-wrapper-22">Password Changes</div>
-                            <input className="placebox-info-2" text="Current Passwod" />
+                            <input className="placebox-info-2" placeholder="Current Passwod" onChange={(e)=>setcurrentPassword(e.target.value)} />
                         </div>
-                        <input className="placebox-info-2" text="New Passwod" />
-                        <input className="placebox-info-2" text="Confirm New Passwod" />
+                        <input className="placebox-info-2" placeholder="New Passwod" onChange={(e)=>setNewPassword(e.target.value)}/>
+                        <input className="placebox-info-2" placeholder="Confirm New Passwod" onChange={(e)=>setConfirmPassword(e.target.value)} />
                     </div>
                     <div className="frame-24">
                         <div className="text-wrapper-23">Cancel</div>
-                        <button button="primary" className="button-instance" text="Save Changes" />
+                        <button onClick={(e)=>{modifyProfile({name:name?name:user.name,
+                        lastName:lastName?lastName:user.lastName,
+                        email:email?email:user.email,
+                        adress:adresse?adresse:user.adresse,
+                        currentPassword:currentPassword,
+                        newPassword:newPassword,
+                        confirmPassword:confirmPassword},e)}}  className="button-instance" >Save Changes</button> 
                     </div>
                 </div>
             

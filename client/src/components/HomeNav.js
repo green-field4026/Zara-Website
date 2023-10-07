@@ -59,8 +59,8 @@ const HomeNav = () => {
                 onClick={() => setOpen(!open)}
               ></i>
               {open && (
-                <div className="dropdown">
-                  <div className="dropdownitem">
+                <div  className="dropdown">
+                  <div onClick={() => navigate("/account")} className="dropdownitem">
                     <i className="fa-regular fa-user"></i>Manage My Account
                   </div>
                   <div className="dropdownitem">

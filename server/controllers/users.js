@@ -54,4 +54,24 @@ module.exports = {
       next(err);
     }
   },
+  checkpassword:async (req,res,next)=>{
+try {
+  const userInfo = await User.findOne({
+    where: {
+      email: req.body.email,
+    }})
+    if (bcrypt.compareSync(req.body.currentPassword, userInfo.password)) {
+    User.update({name:req.body.name,lastName:req.body.lastName,email:req.body.email,adress:req.body.adress,
+     password:bcrypt.hashSync(req.body.newPassword)},{where:{id:userInfo.id}})
+   
+    res.json({
+      status: "success",
+      message: "user found!!!",
+      data: { user: userInfo},
+    }); }
+} catch (error) {
+  next(err);
+}
+
+  }
 };
