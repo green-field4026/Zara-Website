@@ -7,6 +7,8 @@ const HomeNav = () => {
   const [currentUser, setCurrentuser] = useState(
     JSON.parse(localStorage.getItem("user"))
   );
+  const [currentState, setcurrentState] = useState("Buyer")
+  
   const logged = localStorage.getItem("token");
   const navigate = useNavigate();
   const logOut = () => {
@@ -14,7 +16,9 @@ const HomeNav = () => {
     localStorage.removeItem("Wishlist");
     localStorage.removeItem("token");
   };
-  // const cart = localStorage.getItem(JSON.parse("cart"))
+  useEffect(()=>{
+    setcurrentState(currentUser.state)
+  })
   const search = async (name) => {
     try {
       const task = await axios.get(
@@ -52,6 +56,12 @@ const HomeNav = () => {
               Sign Up
             </Link>
           )}
+        </li>
+        <li>
+        { currentState === "Seller" ?
+          <Link className="link" to="/seller">
+            Add Product
+          </Link> : null}
         </li>
       </ul>
       <div className="nav">

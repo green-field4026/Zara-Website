@@ -17,7 +17,7 @@ import Cart from "./components/Cart"
 import { ToastContainer } from 'react-toastify';
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
-
+import SellerSection from "./components/SellerSection";
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -131,6 +131,7 @@ const getData = ()=>{
         <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         <Route path="/terms" element={<TermsOfUse />}></Route>
         <Route path="/cart"  element={<Cart cart={cart} setCart={setCart} />}></Route>
+        <Route path="/seller"  element={<SellerSection />}></Route>
       </Routes>
     </div>
     <ToastContainer
