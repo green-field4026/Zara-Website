@@ -250,7 +250,7 @@ const HomePage = ({cart,setCart}) => {
         </div>
 
         <div className="cards">
-          <CardGenerator products={currentProducts.slice(10, 14)} />
+          <CardGenerator  cart={cart} setCart={setCart} products={currentProducts.slice(10, 14)} />
         </div>
       </div>
       <div className="container">
@@ -281,7 +281,7 @@ const HomePage = ({cart,setCart}) => {
           </div>
         </div>
 
-        <CardGenerator products={currentProducts.slice(6, 14)} />
+        <CardGenerator  cart={cart} setCart={setCart} products={currentProducts.slice(6, 14)} />
         <Link
           className="links"
           to="/allproduct"

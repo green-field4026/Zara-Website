@@ -18,6 +18,7 @@ import { ToastContainer } from 'react-toastify';
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import SellerSection from "./components/SellerSection";
+import ScrollToTop from "./components/ScrollToTop"
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
@@ -108,7 +109,9 @@ const getData = ()=>{
   return (
     <Provider store={store}>
     <div className="App">
+    <ScrollToTop /> 
       <Routes>
+     
       <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products}/>}></Route>
         <Route
           path="/login"
