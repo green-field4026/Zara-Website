@@ -70,7 +70,7 @@ try {
       data: { user: userInfo},
     }); }
 } catch (error) {
-  next(err);
+  next(error);
 }
 
   }
