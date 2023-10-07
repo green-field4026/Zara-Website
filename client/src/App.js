@@ -13,6 +13,7 @@ import axios from "axios";
 import { Account } from "./components/Account";
 import NotFound from "./components/NotFound";
 import WishList from "./components/WishList";
+import Cart from "./components/Cart"
 import { ToastContainer } from 'react-toastify';
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
@@ -128,7 +129,7 @@ const getData = ()=>{
         <Route path="/details" element={<ProductDetails />}></Route>
         <Route path="/privacy" element={<PrivacyPolicy />}></Route>
         <Route path="/terms" element={<TermsOfUse />}></Route>
-
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </div>
     <ToastContainer

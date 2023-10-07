@@ -1,0 +1,93 @@
+.cart-container {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  min-height: 70vh;
+}
+
+table,
+td,
+th {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  width: 25%;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+.cart-image img {
+  width: 30%;
+}
+.cart-image i {
+  padding: 5px;
+  color: red;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+}
+.cart-image {
+  width: 25%;
+  overflow: hidden;
+  position: relative;
+}
+
+.inpuuu {
+  width: 72px;
+  height: 44px;
+  text-align: center;
+}
+.checkout-input{
+    padding: 14px;
+    margin-right: 10px;
+}
+
+.checkout{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-checkout{
+    width: 470px;
+height: 324px;
+border: 1px solid black;
+padding: 40px;
+}
+
+.second-checkout > span{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.section{
+    display: flex;
+    justify-content: space-between;
+     padding-bottom: 10px;
+     margin: 20px 0px;
+     border-bottom: 1px solid black;
+    }
+
+#total{
+    border-bottom: none;
+}
+
+#thefinal{
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: #db4444;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
