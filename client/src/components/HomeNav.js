@@ -25,6 +25,7 @@ const HomeNav = () => {
         `http://localhost:1337/products/search/${name}`
       );
       setSearchData(task.data)
+      console.log(task)
     } catch (e) {
       console.error(e);
     }
@@ -69,26 +70,19 @@ const HomeNav = () => {
         <div className="search">
           <input
             type="text"
-            onKeyDown={ (e) => {
-              if (e.key === "Enter") {
-                search(e.target.value)
-                e.target.value !== "" ? setIsOpen(true) : setIsOpen(false);
-              }
-            }}
+            className="theone"
+            defaultValue={""}
+             onChange={(e)=>{search(e.target.value)}}
             placeholder="What are you looking for"
           />
             <i className="fa-solid fa-magnifying-glass"></i>
+           
             </div>
-          {isOpen && (
-            <ul className="searchTerms">
-              {searchData.map((item, i) => (
-                <li key={i}>
-                  {item.name }
-                  {item.price}
-                </li>
-              ))}
-            </ul>
-          )}
+            {searchData.length ? <ul className="tofind">
+            {searchData.map((item)=>{
+              return  <Link className="linkss" to="/details" state={{ from: item }}><li className="searchItem">{item.name}</li> </Link>
+            })}
+            </ul> :null}
           </div>
         <div className="navigations">
           {logged ?     <Link className="link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> </Link> : null}

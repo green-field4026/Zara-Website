@@ -10,7 +10,7 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
   const notify = () => {
     toast.info(oneElement.name + " added to wishlist", {
       position: "bottom-right",
-      autoClose: 5000,
+      autoClose: 1000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -19,6 +19,20 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
       theme: "dark",
     });
   };
+  const titi = () => {
+    toast.success(oneElement.name + " added to cart", {
+      pposition: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
+
+
   const Users = JSON.parse(localStorage.getItem("user"));
   const UserId = Users ? Users.id : "";
   const getWishlist = async (id) => {
@@ -60,7 +74,8 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
 
         <div className="addtocard" onClick={()=>(
           setCart([...cart,oneElement]),
-          console.log(cart)
+          console.log(cart),
+          titi()
         )}>add to card</div>
       </div>
 
