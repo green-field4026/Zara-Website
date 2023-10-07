@@ -20,8 +20,9 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       rate: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue:3,
       },
       desc: {
         type: DataTypes.TEXT,

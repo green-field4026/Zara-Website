@@ -81,4 +81,12 @@ module.exports = {
       throw err;
     }
   },
+  createForSeller: async (req, res, next) => {
+    try {
+     var x= await Product.create(req.body);
+      res.json(x.id);
+    } catch (err) {
+      throw err;
+    }
+  },
 };

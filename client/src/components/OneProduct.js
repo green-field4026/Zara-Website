@@ -66,8 +66,9 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
   return (
     <div key={index} className="productCard">
       <div className="cardcart">
+        {console.log(oneElement.Images[3].image_Url)}
         <img
-          src={oneElement.Images[2].image_Url}
+         src={oneElement.Images[3].image_Url}
           alt="product-img"
           className="productImage"
         ></img>
