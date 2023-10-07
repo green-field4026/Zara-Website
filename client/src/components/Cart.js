@@ -23,7 +23,7 @@ const Cart = () => {
               <i class="fa-solid fa-circle-xmark"></i>
             </td>
             <td>$100</td>
-            <td><input type="number" className="inpuuu"/></td>
+            <td><input type="number" className="inpuuus"/></td>
             <th>home</th>
           </tr>
       

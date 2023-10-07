@@ -78,7 +78,7 @@ const HomeNav = () => {
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="navigations">
-          {logged ? <i className="fa-solid fa-cart-shopping"></i> : null}
+          {logged ?     <Link className="link" to="/cart"><i className="fa-solid fa-cart-shopping"></i> </Link> : null}
           {logged ? (
             <i
               className="fa-regular fa-heart"
