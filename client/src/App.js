@@ -13,6 +13,7 @@ import axios from "axios";
 import { Account } from "./components/Account";
 import NotFound from "./components/NotFound";
 import WishList from "./components/WishList";
+import Cart from "./components/Cart"
 import { ToastContainer } from 'react-toastify';
 const App = () => {
   const [alert, setAlert] = useState("");
@@ -124,6 +125,7 @@ const getData = ()=>{
         <Route path="/*" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
         <Route path="/details" element={<ProductDetails />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Routes>
     </div>
     <ToastContainer
