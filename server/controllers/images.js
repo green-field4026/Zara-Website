@@ -19,6 +19,10 @@ module.exports = {
     const newImage = await Image.bulkCreate(req.body);
     res.json(newImage);
   },
+  createOneImg: async (req, res) => {
+    const newImage = await Image.create(req.body);
+    res.json(newImage);
+  },
   update: async (req, res) => {
     const updatedImage = await Image.update(req.body, {
       where: { id: req.params.id },
