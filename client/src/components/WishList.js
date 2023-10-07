@@ -67,7 +67,7 @@ const WishList = () => {
           {Products.length ?
           Products.map((obj, i) => (
             <WishlistCards remove={remove} i={i} oneElement={obj} key={i} />
-          )):<h1> No Product in your WishList </h1>}
+          )):<h1> Your Wishlist is Empty Please add more Products </h1>}
         </div>
       </div>
 

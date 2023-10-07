@@ -71,7 +71,7 @@ theme: "dark",
       ) : null}
       {logged ? (
         <i
-          class="fa-regular fa-heart productCard__wishlist cardicons"
+          className="fa-regular fa-heart productCard__wishlist cardicons"
           onClick={async () => (
             console.log((await check(UserId, oneElement.id)) === false),
             !(await check(UserId, oneElement.id))
