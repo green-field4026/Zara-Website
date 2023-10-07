@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 const HomeNav = () => {
   const [open, setOpen] = useState(false);
   const [currentUser, setCurrentuser] = useState(
@@ -8,11 +9,23 @@ const HomeNav = () => {
   );
   const logged = localStorage.getItem("token");
   const navigate = useNavigate();
-  const logOut =  () => {
+  const logOut = () => {
     localStorage.removeItem("user");
     localStorage.removeItem("Wishlist");
     localStorage.removeItem("token");
   };
+  const search = async (name) => {
+    try {
+      const task = await axios.get(
+        `http://localhost:1337/products/search/${name}`
+      );
+      setSearchData(task.data)
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchData, setSearchData] = useState([]);
   return (
     <div className="header">
       <div className="logo">Exclusive</div>
@@ -33,8 +46,8 @@ const HomeNav = () => {
           </Link>
         </li>
         <li>
-          {logged ? null: (
-            <Link className="link" to="/signup" >
+          {logged ? null : (
+            <Link className="link" to="/signup">
               Sign Up
             </Link>
           )}
@@ -42,15 +55,36 @@ const HomeNav = () => {
       </ul>
       <div className="nav">
         <div className="serach">
-          <input type="text" placeholder="What are you looking for" />
+          <input
+            type="text"
+            onKeyDown={ (e) => {
+              if (e.key === "Enter") {
+                search(e.target.value)
+                e.target.value !== "" ? setIsOpen(true) : setIsOpen(false);
+              }
+            }}
+            placeholder="What are you looking for"
+          />
+          {isOpen && (
+            <ul>
+              {searchData.map((item, i) => (
+                <li key={i}>
+                  {item.name }
+                  {item.price}
+                </li>
+              ))}
+            </ul>
+          )}
           <i className="fa-solid fa-magnifying-glass"></i>
         </div>
         <div className="navigations">
-          {logged?<i className="fa-solid fa-cart-shopping"></i>:null}
-          {logged?<i
-            className="fa-regular fa-heart"
-            onClick={() => navigate("/wishList")}
-          ></i>:null}
+          {logged ? <i className="fa-solid fa-cart-shopping"></i> : null}
+          {logged ? (
+            <i
+              className="fa-regular fa-heart"
+              onClick={() => navigate("/wishList")}
+            ></i>
+          ) : null}
           {currentUser && (
             <>
               <i
@@ -73,7 +107,10 @@ const HomeNav = () => {
                   <div className="dropdownitem">
                     <i className="fa-regular fa-star"></i>My Reviews
                   </div>
-                  <div className="dropdownitem" onClick={()=>(logOut(),navigate("/login"))}>
+                  <div
+                    className="dropdownitem"
+                    onClick={() => (logOut(), navigate("/login"))}
+                  >
                     <i className="fa-solid fa-arrow-right-from-bracket"></i>
                     Logout
                   </div>

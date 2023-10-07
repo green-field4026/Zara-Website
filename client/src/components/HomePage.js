@@ -171,7 +171,7 @@ const HomePage = () => {
               dispatsh(fetchProductByCategory("food"));
             }}
             to="/allproduct"
-            state={{ request:"food"}}>
+            state={{ request:"food" }}>
             <div className="oneCata">
               <i className="fa-solid fa-computer"></i>
               <span>Computer</span>

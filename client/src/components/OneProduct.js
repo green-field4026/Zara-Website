@@ -59,11 +59,11 @@ const OneProduct = ({ oneElement, index }) => {
         ></img>
       </Link>
       {logged ? (
-        <i class="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
+        <i className="fa-solid fa-cart-shopping productCard__cart cardicons"></i>
       ) : null}
       {logged ? (
         <i
-          class="fa-regular fa-heart productCard__wishlist cardicons"
+          className="fa-regular fa-heart productCard__wishlist cardicons"
           onClick={async () => (
             console.log((await check(UserId, oneElement.id)) === false),
             !(await check(UserId, oneElement.id))
