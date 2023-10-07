@@ -75,7 +75,15 @@ const App = () => {
       console.error(e);
     }
   };
-
+  const modifyProfile=(user,e)=>{
+    console.log(user);
+    e.preventDefault()
+    if(user.newPassword===user.confirmPassword){
+    axios.post(`http://localhost:1337/users/modify`,user)
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err))
+    }
+    }
 
 const getData = ()=>{
   axios.get("http://localhost:1337/products/getAll")
@@ -112,7 +120,7 @@ const getData = ()=>{
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/about" element={<AboutUs />}></Route>
         <Route path="/allproduct" element={<AllProduct />}></Route>
-        <Route path="/account" element={<Account/>}></Route>
+        <Route path="/account" element={<Account modifyProfile={modifyProfile}/>}></Route>
         <Route path="/*" element={<NotFound/>}></Route>
         <Route path="/wishList" element={<WishList/>}></Route>
         <Route path="/details" element={<ProductDetails />}></Route>

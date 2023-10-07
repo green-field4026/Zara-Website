@@ -406,3 +406,61 @@
     background-color: white;
     color: black;
    }
+
+.about-mumber{
+  width: 370px;
+
+}
+.mumber-image{
+  background: var(--Secondary, #F5F5F5);
+  display: flex;
+  justify-content: center;
+}
+.about-mumber img{
+  width: 236px;
+height: 391px;
+}
+
+.mumber-data {
+  margin-top: 10px;
+  display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+.mumber-data span {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.mumber-data :first-child {
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px; /* 93.75% */
+  letter-spacing: 1.28px
+}
+
+.alliconnss{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.alliconnss i{
+  color: black;
+  font-size: 30px;
+  margin-left: 10px;
+}
+
+.aboutts{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
