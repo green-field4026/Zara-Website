@@ -21,10 +21,21 @@ export const fetchProductByCategory = createAsyncThunk(
     const data = await axios.get(
       `http://localhost:1337/products/filter/${category}`
     );
-    // console.log(data);
     return data.data;
   }
 );
+
+export const editProduct = createAsyncThunk(
+  "/products/category",
+  async (obj,id) => {
+    const data = await axios.put(
+      `http://localhost:1337/products/${id}/`,obj
+    );
+    return data.data;
+  }
+);
+
+
 
 const ProductSlice = createSlice({
   name: "product",

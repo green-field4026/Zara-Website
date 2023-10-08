@@ -6,9 +6,7 @@ import "../styles/Cart.css";
 import OneCartElement from "./OneCartElement";
 const Cart = ({ cart, setCart }) => {
   const [dummy, setDummy] = useState(0);
-  useEffect(() => {
-    console.log(cart);
-  }, []);
+
   const [total, setTotal] = useState(0);
   return (
     <div>

@@ -12,8 +12,7 @@ const AllProduct=({cart,setCart}) =>{
  
   const { request,from } = location.state
   const filteredProducts = useSelector((state) => state.getProducts.filterd);
-  console.log(request);
-  console.log("data",filteredProducts);
+
   useEffect(()=>{
     dispatsh(fetchProductByCategory(request))
   },[])

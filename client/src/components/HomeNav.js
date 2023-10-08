@@ -25,7 +25,6 @@ const HomeNav = () => {
         `http://localhost:1337/products/search/${name}`
       );
       setSearchData(task.data);
-      console.log(task);
     } catch (e) {
       console.error(e);
     }

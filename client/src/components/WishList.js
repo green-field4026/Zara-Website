@@ -4,6 +4,7 @@ import TopHeader from "./TopHearder";
 import "../styles/WishList.css";
 import HomeNav from "./HomeNav";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import WishlistCards from "./WishlistCards";
 const WishList = ({ cart, setCart }) => {
   const [Products, setProducts] = useState([]);
@@ -12,6 +13,7 @@ const WishList = ({ cart, setCart }) => {
   );
   const Users = JSON.parse(localStorage.getItem("user"));
   const uId = Users.id;
+  const navigate = useNavigate();
   // const Users = JSON.parse(localStorage.getItem("user"));
   // const id = Users.id;
   const remove = async (pId, uId) => {
@@ -72,7 +74,7 @@ const WishList = ({ cart, setCart }) => {
                 : null;
                 Products.forEach((obj, i) => {
                   remove(obj.id, uId);
-                });
+                });navigate('/cart')
               }}
             >
               Move All To Bag

@@ -67,7 +67,6 @@ function SellerSection({getData, addProdSeller , setSellerProduct }) {
             />
           </BottomNavigation>
         </Box>
-        <Link to="/sellerProducts">to SellerProduct</Link>
         <div className="sellersection">
           <div className="theinputs">
             <div className="inputse">
@@ -137,34 +136,29 @@ function SellerSection({getData, addProdSeller , setSellerProduct }) {
               </select>
             </div>
 
-            <div>
+            <div className="forimages">
               <label>add 4 images of your product :</label>
-              <br></br>
-              <span></span>
               <input
                 onChange={(e) => {
                   setFImage(e.target.value);
                 }}
                 placeholder="First image"
               />
-              <br></br>
-              <span></span>
+              
               <input
                 onChange={(e) => {
                   setSImage(e.target.value);
                 }}
                 placeholder="Seecond image"
               />
-              <br></br>
-              <span></span>
+            
               <input
                 onChange={(e) => {
                   setTImage(e.target.value);
                 }}
                 placeholder="Third image"
               />
-              <br></br>
-              <span></span>
+            
               <input
                 onChange={(e) => {
                   setFoImage(e.target.value);

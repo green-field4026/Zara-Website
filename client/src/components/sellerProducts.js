@@ -8,24 +8,37 @@ import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import OneUserProduct from "./OneUserProduct";
 import axios from "axios";
-const SellerProducts = ({ sellerProduct, setSellerProduct }) => {
+const SellerProducts = ({editProduct}) => {
   const navigate = useNavigate();
-  const [value, setValue] = useState(0);
   const [seller, setSeller] = useState([]);
   const [products, setProducts] = useState([]);
+
+
+  const deleteProduct = (id,products) => {
+    axios
+      .delete(`http://localhost:1337/products/${id}`)
+      .then((res) => {
+        getData();
+        getProdSeller(products)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
+
   const getData = async () => {
     try {
       const res = await axios.get("http://localhost:1337/products/getAll");
       setProducts(res.data);
       getProdSeller(res.data);
-      console.log(res.data);
+  
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
@@ -49,14 +62,11 @@ const SellerProducts = ({ sellerProduct, setSellerProduct }) => {
       <TopHearder />
 
       <HomeNav />
-      <div className="container">
+      <div className="container" id="thisones">
         <Box sx={{ width: 500 }} className="thenaver">
           <BottomNavigation
             showLabels
-            value={value}
-            onChange={(event, newValue) => {
-              setValue(newValue);
-            }}
+            value={1}
           >
             <BottomNavigationAction
               onClick={() => {
@@ -86,7 +96,7 @@ const SellerProducts = ({ sellerProduct, setSellerProduct }) => {
           {seller[0] ? (
             <tbody>
               {seller.map((obj, i) => {
-                return <OneUserProduct obj={obj} key={i} index={i} />;
+                return <OneUserProduct obj={obj} key={i} index={i} editProduct={editProduct} deleteProduct={deleteProduct} getProdSeller={getProdSeller} products={products}/>;
               })}
             </tbody>
           ) : (
