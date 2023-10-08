@@ -10,7 +10,9 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-function SellerSection({ addProdSeller,setSellerProduct ,products}) {
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
+function SellerSection({ addProdSeller,setSellerProduct ,products,getData}) {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(0)
@@ -25,16 +27,20 @@ function SellerSection({ addProdSeller,setSellerProduct ,products}) {
   const [user, setUser] = useState(JSON.parse(localStorage.user));
   const navigate = useNavigate();
   const [value, setValue] = useState(0);
+  const dispatsh = useDispatch();
+  const currentProducts = useSelector((state) => state.getProducts.value);
 
 
   const getProdSeller=()=>{
 
-    var x=products.filter(e=>e.id===user.id)
+    var x=currentProducts.filter(e=>e.UserId===user.id)
     setSellerProduct(x);
     }
 
     useEffect(()=>{
       getProdSeller()
+      getData()
+      dispatsh(fetchProduct());
     },[])
   return (
     <div>
@@ -51,7 +57,7 @@ function SellerSection({ addProdSeller,setSellerProduct ,products}) {
         }}
       >
         <BottomNavigationAction  onClick={()=>{navigate("/seller")}}label="Recents" icon={<RestoreIcon /> } />
-        <BottomNavigationAction  onClick={()=>{navigate("/sellerProducts")}} label="Favorites" icon={<FavoriteIcon /> } />
+        <BottomNavigationAction  onClick={()=>{getData(),navigate("/sellerProducts")}} label="Favorites" icon={<FavoriteIcon /> } />
       </BottomNavigation>
     </Box>
 
@@ -99,7 +105,7 @@ function SellerSection({ addProdSeller,setSellerProduct ,products}) {
 <button type='submit' onClick={() => {
 addProdSeller({ name:name, stockNumber: quantity*1, price:price*1,rate:rate*1, desc: description, category:category, state: avaiblility ,UserId:user.id}
           , [fImage, sImage, tImage, foImage])
-      }}>Add Product</button>
+      ;getProdSeller()}}>Add Product</button>
 </div>
       <Footer /></div>
     
