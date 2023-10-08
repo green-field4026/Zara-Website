@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Footer from "./Footer";
 import TopHearder from "./TopHearder";
 import Navbar from "./Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import "../styles/Account.css";
 
 

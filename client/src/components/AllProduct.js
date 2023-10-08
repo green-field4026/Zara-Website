@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import { useLocation } from 'react-router-dom';
 import CardGenerator from "./CardGenerator"
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
+import {  fetchProductByCategory } from "../redux/productsSlice";
 const AllProduct=({cart,setCart}) =>{
   const dispatsh = useDispatch()
   const location = useLocation()

@@ -25,7 +25,6 @@ const App = () => {
   const [logAlert, setLogAlert] = useState("")
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [idImage, setIdImage] = useState('')
 
 
   //create a user

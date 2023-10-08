@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,7 +45,7 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
   };
   const AddWishlist = async (input) => {
     try {
-      const task = await axios.post("http://localhost:1337/wishlist/", input);
+       await axios.post("http://localhost:1337/wishlist/", input);
       getWishlist(UserId);
     } catch (e) {
       console.error(e);
@@ -66,7 +65,6 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
   return (
     <div key={index} className="productCard">
       <div className="cardcart">
-        {console.log(oneElement.Images[3].image_Url)}
         <img
          src={oneElement.Images[3].image_Url}
           alt="product-img"
@@ -74,9 +72,8 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
         ></img>
 
         {logged?<div className="addtocard" onClick={()=>(
-          setCart([...cart,oneElement]),
-          console.log(cart),
-          titi()
+          !cart.includes(oneElement)?(setCart([...cart,oneElement]),
+          titi()):null
         )}>add to card</div>:null}
       </div>
 

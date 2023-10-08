@@ -3,11 +3,13 @@ import TopHearder from "./TopHearder";
 import HomeNav from "./HomeNav";
 import Footer from "./Footer";
 import "../styles/Cart.css";
-import OneCartElement from "./OneCartElement"
+import OneCartElement from "./OneCartElement";
 const Cart = ({ cart, setCart }) => {
-  const [dummy,setDummy]= useState(0)
-
-    const [total,setTotal]= useState(0)
+  const [dummy, setDummy] = useState(0);
+  useEffect(() => {
+    console.log(cart);
+  }, []);
+  const [total, setTotal] = useState(0);
   return (
     <div>
       <TopHearder />
@@ -26,15 +28,25 @@ const Cart = ({ cart, setCart }) => {
             <tbody>
               {cart
                 ? cart.map((obj, i) => {
-                  return  <OneCartElement dummy={dummy} setDummy={setDummy} cart={cart} setCart={setCart} obj={obj} key={i} index={i}  total={total} setTotal={setTotal}/>
-                    
+                    return (
+                      <OneCartElement
+                        dummy={dummy}
+                        setDummy={setDummy}
+                        cart={cart}
+                        setCart={setCart}
+                        obj={obj}
+                        key={i}
+                        index={i}
+                        total={total}
+                        setTotal={setTotal}
+                      />
+                    );
                   })
-                 : null} 
-             
+                : null}
             </tbody>
           ) : (
-            <tbody >
-              <tr className="emptyCart" >
+            <tbody>
+              <tr className="emptyCart">
                 <td className="innerText">your Cart is Empty For now</td>
               </tr>
             </tbody>
@@ -53,14 +65,6 @@ const Cart = ({ cart, setCart }) => {
             <span>Cart Total</span>
             {cart ? (
               <div>
-                <div className="section">
-                  <span>Subtotal:</span>
-                  <span>$1750</span>
-                </div>
-                <div className="section">
-                  <span>Subtotal:</span>
-                  <span>$1750</span>
-                </div>
                 <div className="section" id="total">
                   <span>Total:</span>
                   <span>${total}</span>

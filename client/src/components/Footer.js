@@ -3,7 +3,7 @@ import "../styles/footer.css"
 import apple from "../imgs/appleStore.png"
 import google from "../imgs/googleplay.png"
 import qr from "../imgs/Qrcode.png"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const logged = localStorage.getItem("token");
   const navigate = useNavigate();

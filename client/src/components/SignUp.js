@@ -3,14 +3,13 @@ import Navbar from "./Navbar";
 import TopHearder from "./TopHearder";
 import photo from "../imgs/login.png";
 import Footer from "../components/Footer";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/login.css";
 const LoginPage = ({roleAlert, alert, create }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [state, setState] = useState();
-  const navigate = useNavigate();
 
   return (
     <div>
