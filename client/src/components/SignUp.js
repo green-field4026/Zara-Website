@@ -5,7 +5,7 @@ import photo from "../imgs/login.png";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import "../styles/login.css";
-const LoginPage = ({roleAlert, alert, create }) => {
+const LoginPage = ({ roleAlert, alert, create }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +34,7 @@ const LoginPage = ({roleAlert, alert, create }) => {
                 setName(e.target.value);
               }}
             />
-            {alert}
+
             <input
               className="in"
               type="email"
@@ -61,7 +61,8 @@ const LoginPage = ({roleAlert, alert, create }) => {
               <option value="Seller">Seller</option>
               <option value="Buyer">Buyer</option>
             </select>
-            {roleAlert}
+            <h5 style={{ color: "red", fontSize: "14px" }}>{alert}</h5>
+            <h5 style={{ color: "red", fontSize: "14px" }}>{roleAlert}</h5>
             <div className="buttons2">
               <button
                 onClick={(e) =>

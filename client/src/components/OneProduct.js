@@ -86,7 +86,6 @@ const OneProduct = ({ cart, setCart, oneElement, index }) => {
         <i
           className="fa-regular fa-heart productCard__wishlist cardicons"
           onClick={async () => (
-            console.log((await check(UserId, oneElement.id)) === false),
             !(await check(UserId, oneElement.id))
               ? (AddWishlist({
                   UserId: UserId,
