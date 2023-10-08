@@ -29,8 +29,7 @@ const App = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [sellerProduct, setSellerProduct] = useState([])
-  const [proToUp,setProToUp]=useState({})
-  const [imgToUp,setImgToUp]=useState({})
+
 
 
  
@@ -182,8 +181,7 @@ await axios.put(`http://localhost:1337/images/${y[3].id}`,y[3])
           <Route path="/terms" element={<TermsOfUse />}></Route>
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />}></Route>
           <Route path="/seller" element={<SellerSection products={products} setSellerProduct={setSellerProduct}  addProdSeller={addProdSeller} />}></Route>
-          <Route path="/sellerProducts" element={<SellerProducts getClick={getClick}  sellerProduct={sellerProduct}/>}></Route>
-          <Route path="/selupdPro" element={<UpdateProSeller updProdSeller={updProdSeller} imgToUp={imgToUp} proToUp={proToUp} sellerProduct={sellerProduct}/>}></Route>
+          <Route path="/sellerProducts" element={<SellerProducts getClick={getClick}  sellerProduct={sellerProduct} products={products}/>}></Route>
 
         </Routes>
       </div>

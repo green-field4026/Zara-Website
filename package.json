@@ -29,5 +29,9 @@
     "passport-google-oauth20": "^2.0.0",
     "redux": "^4.2.1",
     "sequelize": "^6.33.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }
