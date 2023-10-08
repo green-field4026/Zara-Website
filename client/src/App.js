@@ -19,12 +19,20 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsOfUse from "./components/TermsOfUse";
 import SellerSection from "./components/SellerSection";
 import ScrollToTop from "./components/ScrollToTop"
+import SellerProducts from "./components/sellerProducts";
+import UpdateProSeller from "./components/UpdateProSeller";
+
 const App = () => {
   const [alert, setAlert] = useState("");
   const [roleAlert, setRoleAlert] = useState("");
   const [logAlert, setLogAlert] = useState("")
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
+  const [sellerProduct, setSellerProduct] = useState([])
+
+
+
+ 
 
 
   //create a user
@@ -65,17 +73,17 @@ const App = () => {
         setLogAlert("The email  you entered is incorrect. Please try again.")
         return;
       }
-      else{
+      else {
         localStorage.setItem("token", task.data.data.token);
         localStorage.setItem("user", JSON.stringify(task.data.data.user));
-        task.data.data.products[0]?localStorage.setItem("Wishlist", JSON.stringify(task.data.data.products)):null
+        task.data.data.products[0] ? localStorage.setItem("Wishlist", JSON.stringify(task.data.data.products)) : null
         console.log(task.data.data.products[0]);
         console.log(task.data);
         console.log(task.data.data.user);
         console.log(task.data.data.token);
         navigate("/");
       }
-      
+
     } catch (e) {
       console.error(e);
     }
@@ -101,67 +109,97 @@ const App = () => {
   }
   useEffect(() => {
     getData()
+    
   }, [])
   const [cart, setCart] = useState([])
   // console.log(products)
 
-  const  addProdSeller =async (x, y) => {
-    console.log(x,'   ',y);
+  const addProdSeller = async (x, y) => {
+ 
 
-      try {
-           await  axios.post('http://localhost:1337/products/addProd', x)
-      .then((res) => axios.post('http://localhost:1337/images/add', [{ image_Url: y[0]  ,ProductId: res.data*1},{ image_Url: y[1], ProductId: res.data*1 },
-      {image_Url: y[2]  ,ProductId: res.data*1},{image_Url: y[3] , ProductId: res.data*1 }]))
-
-  
-      
-      } catch (error) {
-       throw (error)
-      }
+    try {
+      await axios.post('http://localhost:1337/products/addProd', x)
+        .then((res) => {axios.post('http://localhost:1337/images/add', [{ image_Url: y[0], ProductId: res.data * 1 }, { image_Url: y[1], ProductId: res.data * 1 },
+        { image_Url: y[2], ProductId: res.data * 1 }, { image_Url: y[3], ProductId: res.data * 1 }]);
+       getData() })
+    
+  } catch (error) {
+      throw (error)
+    }
+    
   }
+  
+  const getClick=(x)=>{
+    console.log(x);
+    setProToUp(x)
+    axios.get(`http://localhost:1337/images/get/${x.id}`)
+    .then((res)=>setImgToUp(res.data))
+  } 
+
+const updProdSeller= async (x,y)=>{
+
+try {
+ await axios.put(`http://localhost:1337/products/${x.id}`, x)
+ .then((res)=>console.log(res))
+ await axios.put(`http://localhost:1337/images/${y[0].id}`,y[0])
+ .then((res)=>console.log(res))
+ await axios.put(`http://localhost:1337/images/${y[1].id}`,y[1])
+.then((res)=>console.log(res))
+await axios.put(`http://localhost:1337/images/${y[2].id}`,y[2])
+.then((res)=>console.log(res))
+await axios.put(`http://localhost:1337/images/${y[3].id}`,y[3])
+.then((res)=>console.log(res))
+
+} catch (error) {
+  throw (error)
+}
+}
+
   return (
     <Provider store={store}>
-    <div className="App">
-    <ScrollToTop /> 
-      <Routes>
-     
-      <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products}/>}></Route>
-        <Route
-          path="/login"
-          element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
-        >
-        </Route>
-        <Route
-          path="/signup"
-          element={
-            <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
-          }
-        ></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/about" element={<AboutUs />}></Route>
-        <Route path="/allproduct" element={<AllProduct  cart={cart} setCart={setCart} />}></Route>
-        <Route path="/account" element={<Account modifyProfile={modifyProfile}/>}></Route>
-        <Route path="/*" element={<NotFound/>}></Route>
-        <Route path="/wishList"  element={<WishList cart={cart} setCart={setCart}/>}></Route>
-        <Route path="/details"  element={<ProductDetails cart={cart} setCart={setCart} />}></Route>
-        <Route path="/privacy" element={<PrivacyPolicy />}></Route>
-        <Route path="/terms" element={<TermsOfUse />}></Route>
-        <Route path="/cart"  element={<Cart cart={cart} setCart={setCart} />}></Route>
-        <Route path="/seller"  element={<SellerSection addProdSeller={addProdSeller} />}></Route>
-      </Routes>
-    </div>
-    <ToastContainer
-position="bottom-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="light"
-/>
+      <div className="App">
+        <ScrollToTop />
+        <Routes>
+
+          <Route path="/" element={<HomePage cart={cart} setCart={setCart} products={products} />}></Route>
+          <Route
+            path="/login"
+            element={<LoginPage logAlert={logAlert} authenticate={authenticate} />}
+          >
+          </Route>
+          <Route
+            path="/signup"
+            element={
+              <SignUp roleAlert={roleAlert} alert={alert} create={createUser} />
+            }
+          ></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/about" element={<AboutUs />}></Route>
+          <Route path="/allproduct" element={<AllProduct cart={cart} setCart={setCart} />}></Route>
+          <Route path="/account" element={<Account modifyProfile={modifyProfile} />}></Route>
+          <Route path="/*" element={<NotFound />}></Route>
+          <Route path="/wishList" element={<WishList cart={cart} setCart={setCart} />}></Route>
+          <Route path="/details" element={<ProductDetails cart={cart} setCart={setCart} />}></Route>
+          <Route path="/privacy" element={<PrivacyPolicy />}></Route>
+          <Route path="/terms" element={<TermsOfUse />}></Route>
+          <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />}></Route>
+          <Route path="/seller" element={<SellerSection getData={getData} products={products} setSellerProduct={setSellerProduct}  addProdSeller={addProdSeller} />}></Route>
+          <Route path="/sellerProducts" element={<SellerProducts getClick={getClick}  sellerProduct={sellerProduct} products={products}/>}></Route>
+
+        </Routes>
+      </div>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </Provider>
   );
 };

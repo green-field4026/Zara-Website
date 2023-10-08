@@ -1,0 +1,44 @@
+.sellersection{
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.theinputs{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.inputse{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+}
+.inputse input{
+    width: 235px;
+    padding: 15px;
+    flex-shrink: 0;
+    border: none;
+    outline: none;
+    background-color: #f5f5f5;
+}
+.inputse select{
+    width: 235px;
+    padding: 15px;
+    flex-shrink: 0;
+    border: none;
+    outline: none;
+    background-color: #f5f5f5;
+}
+
+.thenaver{
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -11,7 +11,7 @@ const {
 router.get('/', findAll);
 router.post('/add', create);
 router.post('/addOneImg',createOneImg)
-router.get("/:userId",findOne)
+router.get("/get/:proId",findOne)
 router.put("/userId",update)
 router.delete("/:userId",remove)
 
