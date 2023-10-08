@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 import TopHeader from "./TopHearder";
 import HomeNav from "./HomeNav";
 
-function SellerSection({ addProdSeller }) {
+function SellerSection({ addProdSeller,setSellerProduct ,products}) {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(0)
@@ -15,12 +16,22 @@ function SellerSection({ addProdSeller }) {
   const [tImage, setTImage] = useState('')
   const [foImage, setFoImage] = useState('')
   const [rate,setRate]=useState(3)
+  const [user, setUser] = useState(JSON.parse(localStorage.user));
+  const navigate = useNavigate();
 
+
+
+  const getProdSeller=()=>{
+  
+    var x=products.filter(e=>e.id===user.id)
+    setSellerProduct(x);
+   
+    }
   return (
     <div>
       <TopHeader />
       <HomeNav />
-
+<button onClick={()=>{navigate("/sellerProducts");getProdSeller()}}>my products</button>
       <label>Your product:</label><br></br>
       <span>Name:</span><input placeholder='name of the product ' onChange={(e) => { setName(e.target.value);  }} /><br></br>
       <span>Quantity:</span><input defaultValue={1} type='number' placeholder='number of quantity' onChange={(e) => { setQuantity(e.target.value) }} /><br></br>
@@ -57,7 +68,7 @@ function SellerSection({ addProdSeller }) {
       <span></span><input onChange={(e) => { setTImage(e.target.value); }} placeholder='Third image' /><br></br>
       <span></span><input onChange={(e) => { setFoImage(e.target.value)}} placeholder='Forth image' />
       <button type='submit' onClick={() => {
-addProdSeller({ name:name, stockNumber: quantity*1, price:price*1,rate:rate*1, desc: description, category:category, state: avaiblility }
+addProdSeller({ name:name, stockNumber: quantity*1, price:price*1,rate:rate*1, desc: description, category:category, state: avaiblility ,UserId:user.id}
           , [fImage, sImage, tImage, foImage])
       }}>Add Product</button>
 
