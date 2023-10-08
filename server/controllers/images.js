@@ -8,7 +8,7 @@ module.exports = {
     res.json(images);
   },
   findOne: async (req, res) => {
-    const image = await Image.findByPk(req.params.id)
+    const image = await Image.findAll({where:{ProductId:req.params.proId}})
     if (image) {
       res.json(image);
     } else {

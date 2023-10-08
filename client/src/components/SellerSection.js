@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 import TopHeader from "./TopHearder";
 import HomeNav from "./HomeNav";
 import "../styles/Seller.css"
-function SellerSection({ addProdSeller }) {
+function SellerSection({ addProdSeller,setSellerProduct ,products}) {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(0)
@@ -15,7 +16,17 @@ function SellerSection({ addProdSeller }) {
   const [tImage, setTImage] = useState('')
   const [foImage, setFoImage] = useState('')
   const [rate,setRate]=useState(3)
+  const [user, setUser] = useState(JSON.parse(localStorage.user));
+  const navigate = useNavigate();
 
+
+
+  const getProdSeller=()=>{
+  
+    var x=products.filter(e=>e.id===user.id)
+    setSellerProduct(x);
+   
+    }
   return (
     <div>
       <TopHeader />
@@ -74,7 +85,7 @@ function SellerSection({ addProdSeller }) {
 </div>
 </div>
 <button type='submit' onClick={() => {
-addProdSeller({ name:name, stockNumber: quantity*1, price:price*1,rate:rate*1, desc: description, category:category, state: avaiblility }
+addProdSeller({ name:name, stockNumber: quantity*1, price:price*1,rate:rate*1, desc: description, category:category, state: avaiblility ,UserId:user.id}
           , [fImage, sImage, tImage, foImage])
       }}>Add Product</button>
 </div>
