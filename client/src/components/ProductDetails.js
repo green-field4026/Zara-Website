@@ -3,13 +3,25 @@ import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
 import Footer from "./Footer";
 import { FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
 import { useLocation } from "react-router-dom";
 import "../styles/productDetails.css";
-const ProductDetails = () => {
+const ProductDetails = ({cart,setCart}) => {
   const [quantite,setQuantite] = useState(0)
   const location = useLocation();
   const { from } = location.state;
-  console.log(from);
+  const titi = () => {
+    toast.success(from.name + " added to cart", {
+      pposition: "bottom-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
   return (
     <>
       <TopHearder />
@@ -17,16 +29,16 @@ const ProductDetails = () => {
       <div className="detail">
         <div className="wrapper1">
           <div className="box1 e">
-            <img src={from.Images[0].image_Url} />
+            <img alt=" is here" src={from.Images[0].image_Url} />
           </div>
           <div className="box1 f">
-            <img src={from.Images[1].image_Url} />
+            <img alt=" is here" src={from.Images[1].image_Url} />
           </div>
           <div className="box1 g">
-            <img src={from.Images[2].image_Url} />
+            <img alt=" is here" src={from.Images[2].image_Url} />
           </div>
           <div className="box1 h">
-            <img src={from.Images[3].image_Url} />
+            <img alt=" is here" src={from.Images[3].image_Url} />
           </div>
         </div>
 
@@ -68,11 +80,11 @@ const ProductDetails = () => {
 
           <div className="quantite">
               <div className="accumelator">
-                  <span className="sub" onClick={()=>{ quantite>0 ?setQuantite(quantite -1):""}}>-</span>
+                  <span className="sub" onClick={()=> quantite>0 ?(setQuantite(quantite -1)):setQuantite(quantite)}>-</span>
                   <span className="num">{quantite}</span>
-                  <span className="add"  onClick={()=>{quantite<from.stockNumber ?setQuantite(quantite +1):""}}>+</span>
+                  <span className="add"  onClick={()=>{quantite<from.stockNumber ?setQuantite(quantite +1):setQuantite(quantite)}}>+</span>
               </div>
-              <button>Add to card</button>
+              <button onClick={()=> (!cart.includes(from)?(setCart([...cart,from]),titi()):null)}>Add to card</button>
               <i className="fa-regular fa-heart"></i>
           </div>
 

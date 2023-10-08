@@ -1,12 +1,8 @@
 import React from "react";
 import {
-  FaShoppingCart,
-  FaRegBookmark,
   FaStar,
-  FaFireAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const WishlistCards = ({ remove, oneElement, index }) => {
   

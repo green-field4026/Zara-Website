@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
 import Footer from "./Footer";
@@ -7,11 +7,11 @@ import "../styles/HomePage.css";
 import CardGenerator from "./CardGenerator";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 const HomePage = ({cart,setCart}) => {
   const dispatsh = useDispatch();
   const currentProducts = useSelector((state) => state.getProducts.value);
-  const filteredProducts = useSelector((state) => state.getProducts.filterd);
+  // const filteredProducts = useSelector((state) => state.getProducts.filterd);
   const currentDate = new Date();
   const year =
     currentDate.getMonth() === 11 && currentDate.getDate() > 24
@@ -64,24 +64,24 @@ const HomePage = ({cart,setCart}) => {
           </div>
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img
+              <img 
                 src="https://www.notebookcheck.org/uploads/tx_nbc2/AppleiPhone14Pro__1__01.JPG"
                 className="d-block w-100"
-                alt="..."
+                alt=""
               />
             </div>
             <div className="carousel-item">
-              <img
+              <img 
                 src="https://i.ytimg.com/vi/FT3ODSg1GFE/maxresdefault.jpg"
                 className="d-block w-100"
-                alt="..."
+                alt=""
               />
             </div>
             <div className="carousel-item">
-              <img
+              <img 
                 src="https://www.01net.com/app/uploads/2022/10/MEA2-iPhone-14-Pro-Photo-Test.jpg"
                 className="d-block w-100"
-                alt="..."
+                alt=""
               />
             </div>
           </div>
@@ -137,7 +137,6 @@ const HomePage = ({cart,setCart}) => {
           <button id="all-prod">View All Products</button>
         </Link>
       </div>
-      {/* category */}
       <div className="container">
         <div className="title">
           <div className="carre"></div>
@@ -234,7 +233,6 @@ const HomePage = ({cart,setCart}) => {
         </div>
       </div>
 
-      {/* best selleres */}
       <div className="container">
         <div className="title">
           <div className="carre"></div>
@@ -261,7 +259,7 @@ const HomePage = ({cart,setCart}) => {
             <button>Buy Now!</button>
           </div>
           <div className="images1">
-            <img src="https://shreepng.com/img/Inside/Electronic/Speaker/JBL%20Boombox%20Black%20Hero.png" />
+            <img alt="" src="https://shreepng.com/img/Inside/Electronic/Speaker/JBL%20Boombox%20Black%20Hero.png" />
           </div>
         </div>
       </div>
@@ -304,7 +302,7 @@ const HomePage = ({cart,setCart}) => {
 
         <div className="wrapper">
           <div className="box a">
-            <img src="https://s3-alpha-sig.figma.com/img/455c/8d64/08463f7e8f57dd3048a2444dbfa0cb90?Expires=1697414400&Signature=jAlofke6wPIDMztvp-pD-J9fYb5PRbmXEzdxbOuiR4yLT25Xw~3RFBHGwi7gd~F0BnBoFA6vD6InEeri~6M9vHGeYBMkPtPzOy466jOPgkBykxI~YTg3XmPM4Awx2bWc8xScxk4PiXbB-PNOAZObJAxVSCpOWqKyBZcozcR~mlJDDkEEFbUBWkPWreulo6gR5qIYgqn9YWYOjjEwDmyOcbfbjaeVYX28LxE44JFbUpmQFClcdxSnNJsP4PR8miw3hfGzsMvU5Z7517BVQEhecE~OxZ3FvIce3FEMvO6ITx1w2WrIeEXhD4ROQhOsQpldxj4rO7y7YTH61y7FVadBTA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            <img alt="" src="https://s3-alpha-sig.figma.com/img/455c/8d64/08463f7e8f57dd3048a2444dbfa0cb90?Expires=1697414400&Signature=jAlofke6wPIDMztvp-pD-J9fYb5PRbmXEzdxbOuiR4yLT25Xw~3RFBHGwi7gd~F0BnBoFA6vD6InEeri~6M9vHGeYBMkPtPzOy466jOPgkBykxI~YTg3XmPM4Awx2bWc8xScxk4PiXbB-PNOAZObJAxVSCpOWqKyBZcozcR~mlJDDkEEFbUBWkPWreulo6gR5qIYgqn9YWYOjjEwDmyOcbfbjaeVYX28LxE44JFbUpmQFClcdxSnNJsP4PR8miw3hfGzsMvU5Z7517BVQEhecE~OxZ3FvIce3FEMvO6ITx1w2WrIeEXhD4ROQhOsQpldxj4rO7y7YTH61y7FVadBTA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
 
             <div className="infos1">
               <span id="title">Women’s Collections</span>
@@ -315,7 +313,7 @@ const HomePage = ({cart,setCart}) => {
             </div>
           </div>
           <div className="box b">
-            <img src="https://s3-alpha-sig.figma.com/img/1c36/0f79/0c1817d3afa266b3c9f8c81ff0ed4428?Expires=1697414400&Signature=oaW1zklLcMx5CqgqGRqpJtV1rIqv3UllkEocOfDGiPfORRP9yljn9-uVZwn6AJWaZwzEpcyLTKKq~~Ae-TUFTpAJxDhDZwPmVA4GWH2kzkOsJdn8ifOj1pfzpiV3-0OdSu73fNqfjZuViEIEgdySpAhK4b3eG93t-v7m3wOko-IogBhSuM5C-mIeO5oDe-WTHOnFUh6ukGhk2pbZce4Ifzi~tN3VYmniJ9W1RsTXe14fjNvHP-1MsmbH-9d170stQTzq7ZzlTFGBkf56FlpnxZE3Gz5ZLS3O9R0HqtfOSvA75loX5JQlKqg31YB3EFdHyWzTASD2ofmu5ksMwXP4MQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            <img alt=""  src="https://s3-alpha-sig.figma.com/img/1c36/0f79/0c1817d3afa266b3c9f8c81ff0ed4428?Expires=1697414400&Signature=oaW1zklLcMx5CqgqGRqpJtV1rIqv3UllkEocOfDGiPfORRP9yljn9-uVZwn6AJWaZwzEpcyLTKKq~~Ae-TUFTpAJxDhDZwPmVA4GWH2kzkOsJdn8ifOj1pfzpiV3-0OdSu73fNqfjZuViEIEgdySpAhK4b3eG93t-v7m3wOko-IogBhSuM5C-mIeO5oDe-WTHOnFUh6ukGhk2pbZce4Ifzi~tN3VYmniJ9W1RsTXe14fjNvHP-1MsmbH-9d170stQTzq7ZzlTFGBkf56FlpnxZE3Gz5ZLS3O9R0HqtfOSvA75loX5JQlKqg31YB3EFdHyWzTASD2ofmu5ksMwXP4MQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
             <div className="infos1">
               <span id="title">PlayStation 5</span>
               <span className="texting">
@@ -325,7 +323,7 @@ const HomePage = ({cart,setCart}) => {
             </div>
           </div>
           <div className="box c">
-            <img src="https://s3-alpha-sig.figma.com/img/e565/9d57/2977438364a41d7e8c9d1e9a794d43ed?Expires=1697414400&Signature=dRDoZK0n1cMhkBz2d3wVQw7B7ARvhImXcFbRfIq~ytX4EQ8ceKFDHTvcFQyBzOgiTgfwz1O~yewyD8ANU9uUB3~CMKTJi9HZq3CVF6z-cwjHwLVTukDK71cbrNDEQtSTx8kAPzHDmFAsZsWbKIVGNalxwf4EoqkjtLuoZxNUVPyNA7vnC1oxvDLzIxomXQHvZV9U00g48UqszqzP19~12mXeT6tweDaFR5N~ftrdW6WjnTeXo3A-Q83ERpDRgWNS-5KvM7xrJ3ZcW7ZLJjC17McBRwaPxmEQ3QWJF3mf6Cee-970cJNy~44fEQNkRuqyYaIMD-xxQhhcFlx8lxQj9w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            <img alt=""  src="https://s3-alpha-sig.figma.com/img/e565/9d57/2977438364a41d7e8c9d1e9a794d43ed?Expires=1697414400&Signature=dRDoZK0n1cMhkBz2d3wVQw7B7ARvhImXcFbRfIq~ytX4EQ8ceKFDHTvcFQyBzOgiTgfwz1O~yewyD8ANU9uUB3~CMKTJi9HZq3CVF6z-cwjHwLVTukDK71cbrNDEQtSTx8kAPzHDmFAsZsWbKIVGNalxwf4EoqkjtLuoZxNUVPyNA7vnC1oxvDLzIxomXQHvZV9U00g48UqszqzP19~12mXeT6tweDaFR5N~ftrdW6WjnTeXo3A-Q83ERpDRgWNS-5KvM7xrJ3ZcW7ZLJjC17McBRwaPxmEQ3QWJF3mf6Cee-970cJNy~44fEQNkRuqyYaIMD-xxQhhcFlx8lxQj9w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
             <div className="infos1">
               <span id="title">Speakers</span>
               <span className="texting">Amazon wireless speakers.</span>
@@ -333,7 +331,7 @@ const HomePage = ({cart,setCart}) => {
             </div>
           </div>
           <div className="box d">
-            <img src="https://s3-alpha-sig.figma.com/img/1531/5cd1/5102562cf220504d288fa568eaa816dd?Expires=1697414400&Signature=OqNkjx21Klzu8amFuyTkdznpAGwRFd8NRRih5jTFCiHIdhng5KxxRD76wX-bz6tWLi631vM3ZSpplrNxScVthOZKKnYPeHp5mrYmr0AErSHKJPb~owoKjbtkZ7cLWnAJvNiWXB~qI12L5473d0bX~NZeovmRc5BEImYEWjUmUGMrQO5hEvsElDABXjozI46WGiXWIN5g5ZcHc9TWLszRxj3YkpymCpP5yxa3oSwFLEombdv~vpuLaa8ETzW9EJdxBaRFebdj5nsaF92jBhMaXB3CMQ-nERfDBRPDJRP3IgePXmuoJxQ6zIhABmn~tXD~YW8SdaMXPNodyI3R6SAW1A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
+            <img alt="" src="https://s3-alpha-sig.figma.com/img/1531/5cd1/5102562cf220504d288fa568eaa816dd?Expires=1697414400&Signature=OqNkjx21Klzu8amFuyTkdznpAGwRFd8NRRih5jTFCiHIdhng5KxxRD76wX-bz6tWLi631vM3ZSpplrNxScVthOZKKnYPeHp5mrYmr0AErSHKJPb~owoKjbtkZ7cLWnAJvNiWXB~qI12L5473d0bX~NZeovmRc5BEImYEWjUmUGMrQO5hEvsElDABXjozI46WGiXWIN5g5ZcHc9TWLszRxj3YkpymCpP5yxa3oSwFLEombdv~vpuLaa8ETzW9EJdxBaRFebdj5nsaF92jBhMaXB3CMQ-nERfDBRPDJRP3IgePXmuoJxQ6zIhABmn~tXD~YW8SdaMXPNodyI3R6SAW1A__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" />
 
             <div className="infos1">
               <span id="title">Perfume</span>

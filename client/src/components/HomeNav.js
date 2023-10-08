@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -17,8 +17,8 @@ const HomeNav = () => {
     localStorage.removeItem("token");
   };
   useEffect(() => {
-    setcurrentState(currentUser?currentUser.state:null);
-  });
+    setcurrentState(currentUser?currentUser.state:null)
+  },[]);
   const search = async (name) => {
     try {
       const task = await axios.get(
@@ -119,7 +119,7 @@ const HomeNav = () => {
                   >
                     <i className="fa-regular fa-user"></i>Manage My Account
                   </div>
-                  <div className="dropdownitem">
+                  <div className="dropdownitem" onClick={()=>navigate("/cart")}>
                     <i className="fa-solid fa-bag-shopping"></i>My Order
                   </div>
                   <div className="dropdownitem">
