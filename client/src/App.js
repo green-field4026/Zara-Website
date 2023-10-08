@@ -59,8 +59,6 @@ const App = () => {
       console.error(e);
     }
   };
-
-
   //authenticate the login
   const authenticate = async (input) => {
     try {
@@ -108,8 +106,6 @@ const App = () => {
       })
   }
   useEffect(() => {
-    getData()
-    
   }, [])
   const [cart, setCart] = useState([])
   // console.log(products)
@@ -121,7 +117,7 @@ const App = () => {
       await axios.post('http://localhost:1337/products/addProd', x)
         .then((res) => {axios.post('http://localhost:1337/images/add', [{ image_Url: y[0], ProductId: res.data * 1 }, { image_Url: y[1], ProductId: res.data * 1 },
         { image_Url: y[2], ProductId: res.data * 1 }, { image_Url: y[3], ProductId: res.data * 1 }]);
-       getData() })
+        })
     
   } catch (error) {
       throw (error)
@@ -183,8 +179,8 @@ await axios.put(`http://localhost:1337/images/${y[3].id}`,y[3])
           <Route path="/privacy" element={<PrivacyPolicy />}></Route>
           <Route path="/terms" element={<TermsOfUse />}></Route>
           <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />}></Route>
-          <Route path="/seller" element={<SellerSection getData={getData} products={products} setSellerProduct={setSellerProduct}  addProdSeller={addProdSeller} />}></Route>
-          <Route path="/sellerProducts" element={<SellerProducts getClick={getClick}  sellerProduct={sellerProduct} products={products}/>}></Route>
+          <Route path="/seller" element={<SellerSection  products={products} setSellerProduct={setSellerProduct} getData={getData}  addProdSeller={addProdSeller} />}></Route>
+          <Route path="/sellerProducts" element={<SellerProducts products={products} getData={getData} getClick={getClick} setSellerProduct={setSellerProduct}  sellerProduct={sellerProduct} />}></Route>
 
         </Routes>
       </div>
