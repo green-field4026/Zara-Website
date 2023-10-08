@@ -3,31 +3,64 @@ import HomeNav from "./HomeNav";
 import TopHearder from "./TopHearder";
 import Footer from "./Footer";
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import OneUserProduct from "./OneUserProduct";
 
-
-const SellerProducts =({sellerProduct,getClick})=>{
+const SellerProducts =({sellerProduct})=>{
  const navigate = useNavigate();
- 
-   
+ const [value, setValue] = useState(0);
+ const [user, setUser] = useState(JSON.parse(localStorage.user));
+
+
    return (<div>
     
     <TopHearder  />
-    
+   
         <HomeNav/>
-        <h3>you have {sellerProduct.length} products :</h3>
-       {sellerProduct.map(e=>{console.log(e);
-        return (
-        <div key={e.id}>
-<h1>{e.name}</h1>
-<h3>{e.price}</h3>
-<h3>{e.stockNumber}</h3>
-<h3>{e.rate}</h3>
-<h3>{e.desc}</h3>
-<h3>{e.category}</h3>
-<h3>{e.state}</h3>
-<button onClick={()=>{navigate('/selupdPro'),getClick(e)}}>update</button>
-<button>delete</button>
-       </div>)})}
+        <div className="container">
+        <Box sx={{ width: 500 }} className="thenaver">
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction  onClick={()=>{navigate("/seller")}}label="Recents" icon={<RestoreIcon /> } />
+        <BottomNavigationAction  onClick={()=>{navigate("/sellerProducts")}} label="Favorites" icon={<FavoriteIcon /> } />
+      </BottomNavigation>
+    </Box>
+    <table>
+          <tbody>
+            <tr>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Subtotal</th>
+            </tr>
+          </tbody>
+          {sellerProduct ? (
+            <tbody>
+              {sellerProduct
+                ? sellerProduct.map((obj, i) => {
+                  return  <OneUserProduct obj={obj} index={i} />
+                  })
+                 : null} 
+             
+            </tbody>
+          ) : (
+            <tbody >
+              <tr className="emptyCart" >
+                <td className="innerText">your Cart is Empty For now</td>
+              </tr>
+            </tbody>
+          )}
+        </table>
+    </div>
 <Footer/>
     </div>)
 }

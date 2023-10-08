@@ -27,7 +27,7 @@ const Product = ProductModel(sequelize);
 const Image = ImageModel(sequelize);
 const Wishlist= WishlistModel(sequelize)
 // sync the database
-sequelize.sync({force:false})
+// sequelize.sync({force:false})
 // sequelize.sync({force:true}).then(() => console.log("Database & tables created!"));
 Product.hasMany(Image)
 Image.belongsTo(Product)

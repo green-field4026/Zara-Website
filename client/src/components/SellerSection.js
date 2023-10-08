@@ -1,9 +1,15 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Footer from "./Footer";
 import TopHeader from "./TopHearder";
 import HomeNav from "./HomeNav";
 import "../styles/Seller.css"
+import Box from '@mui/material/Box';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 function SellerSection({ addProdSeller,setSellerProduct ,products}) {
   const [name, setName] = useState('')
   const [quantity, setQuantity] = useState(1)
@@ -18,32 +24,39 @@ function SellerSection({ addProdSeller,setSellerProduct ,products}) {
   const [rate,setRate]=useState(3)
   const [user, setUser] = useState(JSON.parse(localStorage.user));
   const navigate = useNavigate();
-
+  const [value, setValue] = useState(0);
 
 
   const getProdSeller=()=>{
-  
+
     var x=products.filter(e=>e.id===user.id)
     setSellerProduct(x);
-   
     }
+
+    useEffect(()=>{
+      getProdSeller()
+    },[])
   return (
     <div>
       <TopHeader />
       <HomeNav />
       <div className='container'>
 
-      <div className="title">
-          <div className="carre"></div>
-          <span className="titre">Featured</span>
-        </div>
-        <div className="before-cards">
-          <div className="timer">
-            <h1>New Arrival</h1>
-          </div>
-        </div>
+        <Box sx={{ width: 500 }} className="thenaver">
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction  onClick={()=>{navigate("/seller")}}label="Recents" icon={<RestoreIcon /> } />
+        <BottomNavigationAction  onClick={()=>{navigate("/sellerProducts")}} label="Favorites" icon={<FavoriteIcon /> } />
+      </BottomNavigation>
+    </Box>
 
      <div className='sellersection'>
+   
       <div className='theinputs'>
         <div className='inputse'>
       <label>Your product:</label>
@@ -67,7 +80,6 @@ function SellerSection({ addProdSeller,setSellerProduct ,products}) {
         <option value="Camera">Camera</option>
         <option value="Headphones">Headphones</option>
         <option value="Gaming">Gaming</option>
-
       </select>    
       <span>Avaiblility:</span><select onChange={(e) => { setAvailibility(e.target.value) }}>
         <option value="in Stock">in Stock</option>
