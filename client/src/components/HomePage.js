@@ -119,7 +119,7 @@ const HomePage = ({cart,setCart}) => {
         <div className="before-cards">
           <div className="timer">
             <h1>Flash Sales</h1>
-            <Countdown date={`${year}-10-09T00:00:00`} />
+            <Countdown date={`${year}-10-12T00:00:00`} />
           </div>
           <div className="left-right">
             <i className="fa-solid fa-arrow-left"></i>
