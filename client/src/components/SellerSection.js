@@ -7,9 +7,8 @@ import "../styles/Seller.css";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CategoryIcon from '@mui/icons-material/Category';
+import AddIcon from '@mui/icons-material/Add';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProduct, fetchProductByCategory } from "../redux/productsSlice";
 function SellerSection({getData, addProdSeller , setSellerProduct }) {
@@ -55,15 +54,15 @@ function SellerSection({getData, addProdSeller , setSellerProduct }) {
               onClick={() => {
                 navigate("/seller");
               }}
-              label="Recents"
-              icon={<RestoreIcon />}
+              label="Add Product"
+              icon={<AddIcon />}
             />
             <BottomNavigationAction
               onClick={() => {
                 getData();navigate("/sellerProducts")
               }}
-              label="Favorites"
-              icon={<FavoriteIcon />}
+              label="All My Products"
+              icon={<CategoryIcon />}
             />
           </BottomNavigation>
         </Box>
@@ -169,6 +168,7 @@ function SellerSection({getData, addProdSeller , setSellerProduct }) {
           </div>
         </div>
         <button
+         id="all-prod"
           type="submit"
           onClick={() => {
             addProdSeller(
@@ -177,7 +177,7 @@ function SellerSection({getData, addProdSeller , setSellerProduct }) {
                 stockNumber: quantity * 1,
                 price: price * 1,
                 rate: rate * 1,
-                desc: description,
+                desc: description,  
                 category: category,
                 state: avaiblility,
                 UserId: user.id,
